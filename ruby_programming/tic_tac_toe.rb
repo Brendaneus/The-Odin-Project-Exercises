@@ -21,7 +21,7 @@ class TicTacToe
 		set
 		input = ''
 		loop do
-			puts "Enter nothing to play again or '(Q)UIT' to stop"
+			puts "Enter to play again or '(Q)UIT' to stop"
 			input = gets.chomp.upcase
 			exit if input == 'Q' or input == "QUIT"
 			reset
@@ -41,9 +41,10 @@ class TicTacToe
 		puts
 		choose_mark
 		puts
-		number_board
-		while @board.any? { |x, y| y =~ /[1-9]/ }
+		# number_board
+		while @board.any? { |x, y| y == ' ' }
 			turn
+			p 'turned'
 			return if match?
 			switch
 		end
@@ -82,6 +83,7 @@ class TicTacToe
 		ready if @mode == 2
 		choice = choose_space
 		update choice
+		display
 	end
 
 	#Display ready message for current player
@@ -96,14 +98,14 @@ class TicTacToe
 		return free_space if @mode == 1 and @player == 2
 
 		puts "Choose a space:"
-		display
+		display number_board
 
 		choice = ''
-		until choice =~ /^[1-9]{1}$/
+		until number_board.has_value? choice
 			choice = gets.chomp
 			exit if choice.upcase == 'Q' or choice.upcase == "QUIT"
 			puts "Enter '1' through '9' to make a choice.  (Q)uit to cancel." unless choice =~ /^[1-9]{1}$/
-			puts "Space taken" unless @board.include? choice or choice =~ /[1-9]{1}/
+			puts "Space taken" unless number_board.include? choice or choice =~ /[1-9]{1}/
 		end
 		return choice
 	end
@@ -122,10 +124,10 @@ class TicTacToe
 		@player = (@player == 1) ? 2 : 1
 	end
 
-	#Show board
-	def display
+	#Show board from input
+	def display board=@board
 		puts
-		puts " #{@board[:tl]} ¦ #{@board[:tc]} ¦ #{@board[:tr]} \n---+---+---\n #{@board[:ml]} ¦ #{@board[:mc]} ¦ #{@board[:mr]} \n---+---+---\n #{@board[:bl]} ¦ #{@board[:bc]} ¦ #{@board[:br]} "
+		puts " #{board[:tl]} ¦ #{board[:tc]} ¦ #{board[:tr]} \n---+---+---\n #{board[:ml]} ¦ #{board[:mc]} ¦ #{board[:mr]} \n---+---+---\n #{board[:bl]} ¦ #{board[:bc]} ¦ #{board[:br]} "
 		puts
 	end
 
@@ -137,7 +139,7 @@ class TicTacToe
 	#Fill empty board spaces with numbers for selection
 	def number_board
 		i = 0
-		@board = @board.map do |x, y|
+		return @board.map do |x, y|
 			i += 1
 			[x, i.to_s]
 		end.to_h
@@ -145,13 +147,13 @@ class TicTacToe
 
 	#Print victory message if any matches are made
 	def match?
-		if 	(@board[:tl] == @board[:tc] and @board[:tc] == @board[:tr]) or
-			(@board[:tl] == @board[:mc] and @board[:mc] == @board[:br]) or
-			(@board[:tl] == @board[:ml] and @board[:ml] == @board[:bl]) or
-			(@board[:tc] == @board[:mc] and @board[:mc] == @board[:bc]) or
-			(@board[:ml] == @board[:mc] and @board[:mc] == @board[:mr]) or
-			(@board[:bl] == @board[:bc] and @board[:bc] == @board[:br]) or
-			(@board[:bl] == @board[:mc] and @board[:mc] == @board[:tr])
+		if 	((@board[:tl] == @board[:tc] and @board[:tc] == @board[:tr] and @board[:tl] != ' ') or
+			(@board[:tl] == @board[:mc] and @board[:mc] == @board[:br] and @board[:tl] != ' ') or
+			(@board[:tl] == @board[:ml] and @board[:ml] == @board[:bl] and @board[:tl] != ' ') or
+			(@board[:tc] == @board[:mc] and @board[:mc] == @board[:bc] and @board[:tc] != ' ') or
+			(@board[:ml] == @board[:mc] and @board[:mc] == @board[:mr] and @board[:ml] != ' ') or
+			(@board[:bl] == @board[:bc] and @board[:bc] == @board[:br] and @board[:bl] != ' ') or
+			(@board[:bl] == @board[:mc] and @board[:mc] == @board[:tr] and @board[:bl] != ' '))
 			victory
 		end
 	end
