@@ -42,6 +42,7 @@ class TicTacToe
 		choose_mark
 		puts
 		number_board
+		# MOVE TO "START" METHOD???
 		while @board.any? { |x, y| y =~ /[1-9]/ }
 			turn
 			return if match?
