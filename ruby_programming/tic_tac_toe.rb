@@ -1,9 +1,11 @@
 #TODO:
-#Add smart AI (check for possible matches before choice)
-#
+#Add smart AI (check for opportunities to block opponent before choice)
+#Clean up and refactor new stuff
 #
 #Self contained game.  Create an instance and call #play to start the match.
 class TicTacToe
+	@@matches = {0 => [:tl, :tc, :tr], 1 => [:tl, :mc, :br], 2 => [:tl, :ml, :bl], 3 => [:tc, :mc, :bc], 4 => [:tr, :mr, :br], 5 => [:ml, :mc, :mr], 6 => [:bl, :mc, :tr], 7 => [:bl, :bc, :br]}
+
 	def initialize
 		reset
 	end
@@ -33,6 +35,7 @@ class TicTacToe
 	def reset
 		@board = {tl: ' ', tc: ' ', tr: ' ', ml: ' ', mc: ' ', mr: ' ', bl: ' ', bc: ' ', br: ' '}
 		@player = 1
+		@turn_count = 0
 	end
 
 	#Set options and run game until match is made or board is full
@@ -44,9 +47,9 @@ class TicTacToe
 		# number_board
 		while @board.any? { |x, y| y == ' ' }
 			turn
-			p 'turned'
 			return if match?
 			switch
+			@turn_count += 1
 		end
 		display
 		tie
@@ -95,26 +98,35 @@ class TicTacToe
 
 	#Get move for current player
 	def choose_space
-		return free_space if @mode == 1 and @player == 2
+		return attempt_match if @mode == 1 and @player == 2
 
 		puts "Choose a space:"
-		display number_board
+		display number_board if @turn_count < @player
 
 		choice = ''
 		until number_board.has_value? choice
 			choice = gets.chomp
+			display number_board if choice.upcase == 'K' or choice.upcase == "KEY"
 			exit if choice.upcase == 'Q' or choice.upcase == "QUIT"
-			puts "Enter '1' through '9' to make a choice.  (Q)uit to cancel." unless choice =~ /^[1-9]{1}$/
-			puts "Space taken" unless number_board.include? choice or choice =~ /[1-9]{1}/
+			puts "Enter '1' through '9' to make a choice.  (K)ey for choices.  (Q)uit to cancel." if choice !~ /^[1-9]{1}$/
+			puts "This space is occupied" if !number_board.has_value? choice and choice =~ /^[1-9]{1}$/
 		end
 		return choice
 	end
 
 	#Choose space for AI
-	def free_space
+	def attempt_match
+		cpu_mark = (@mark == 'X') ? 'O' : 'X'
+		match_choice = find_match cpu_mark, true
 		choice = ''
-		until @board.has_value? choice
-			choice = (rand(9) + 1).to_s
+		if match_choice
+			until number_board.has_value? choice and choice =~ /^\d{1}$/
+				choice = number_board[match_choice[rand(3)]]
+			end
+		else
+			until number_board.has_value? choice
+				choice = (rand(9) + 1).to_s
+			end
 		end
 		return choice
 	end
@@ -133,7 +145,7 @@ class TicTacToe
 
 	#Update board
 	def update choice
-		@board[@board.key(choice)] = (@player == 1) ? @mark : (@mark == 'X') ? 'O' : 'X'
+		@board[number_board.key(choice)] = (@player == 1) ? @mark : (@mark == 'X') ? 'O' : 'X'
 	end
 
 	#Fill empty board spaces with numbers for selection
@@ -141,20 +153,33 @@ class TicTacToe
 		i = 0
 		return @board.map do |x, y|
 			i += 1
-			[x, i.to_s]
+			if (y =~ /^[XO]{1}$/)
+				[x, y]
+			else
+				[x, i.to_s]
+			end
 		end.to_h
 	end
 
 	#Print victory message if any matches are made
 	def match?
-		if 	((@board[:tl] == @board[:tc] and @board[:tc] == @board[:tr] and @board[:tl] != ' ') or
-			(@board[:tl] == @board[:mc] and @board[:mc] == @board[:br] and @board[:tl] != ' ') or
-			(@board[:tl] == @board[:ml] and @board[:ml] == @board[:bl] and @board[:tl] != ' ') or
-			(@board[:tc] == @board[:mc] and @board[:mc] == @board[:bc] and @board[:tc] != ' ') or
-			(@board[:ml] == @board[:mc] and @board[:mc] == @board[:mr] and @board[:ml] != ' ') or
-			(@board[:bl] == @board[:bc] and @board[:bc] == @board[:br] and @board[:bl] != ' ') or
-			(@board[:bl] == @board[:mc] and @board[:mc] == @board[:tr] and @board[:bl] != ' '))
+		player_mark = (@player == 1) ? 'X' : (@mark == 'X') ? 'O' : 'X'
+		if find_match player_mark, false
 			victory
+			true
+		end
+	end
+
+	#Find first matched row, or attempt finding matches in random order
+	def find_match mark, choosing
+		if choosing
+			order = [0,1,2,3,4,5,6,7]
+			order.shuffle!
+			@@matches[order.find { |x| (@board[@@matches[x][0]] == mark or @board[@@matches[x][0]] == ' ') and 
+									   (@board[@@matches[x][1]] == mark or @board[@@matches[x][1]] == ' ') and 
+								 	   (@board[@@matches[x][2]] == mark or @board[@@matches[x][2]] == ' ') }]
+		else
+			@@matches.find { |x, y| @board[y[0]] == mark and @board[y[0]] == @board[y[1]] and @board[y[1]] == @board[y[2]] }
 		end
 	end
 
