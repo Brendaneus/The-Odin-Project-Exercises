@@ -12,6 +12,10 @@ def clean_phone_number(phone_number='')
 	match.captures.join('-') unless match.nil?
 end
 
+def collect_hours(date_time)
+	@hours[DateTime.strptime(date_time, '%m/%d/%y %H:%M').hour] += 1
+end
+
 def legislators_by_zipcode(zip)
 	civic_info = Google::Apis::CivicinfoV2::CivicInfoService.new
 	civic_info.key = 'AIzaSyClRzDqDh5MsXwnCWi0kOiiBivP6JsSyBw'
@@ -45,12 +49,15 @@ contents = CSV.open "event_attendees.csv", headers: true, header_converters: :sy
 template_letter = File.read "form_letter.erb"
 erb_template = ERB.new template_letter
 
+@hours = Hash.new(0)
+
 contents.each do |row|
 	id = row[0]
 	name = row[:first_name]
 	zipcode = clean_zipcode(row[:zipcode])
 	legislators = legislators_by_zipcode(zipcode)
 	phone_number = clean_phone_number(row[:homephone])
+	collect_hours(row[:regdate])
 	
 	form_letter = erb_template.result(binding)
 
