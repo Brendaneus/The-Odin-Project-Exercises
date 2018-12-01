@@ -7,6 +7,11 @@ def clean_zipcode(zipcode)
 	zipcode.to_s.rjust(5,"0")[0..4]
 end
 
+def clean_phone_number(phone_number='')
+	match = phone_number.match(/^1*\(*(\d{3})\)*[\-\.\s]*(\d{3})[\-\.\s]*(\d{4})$/)
+	match.captures.join('-') unless match.nil?
+end
+
 def legislators_by_zipcode(zip)
 	civic_info = Google::Apis::CivicinfoV2::CivicInfoService.new
 	civic_info.key = 'AIzaSyClRzDqDh5MsXwnCWi0kOiiBivP6JsSyBw'
@@ -32,6 +37,7 @@ def save_thank_you_letters(id,form_letter)
 	end
 end
 
+
 puts "EventManager initialized."
 
 contents = CSV.open "event_attendees.csv", headers: true, header_converters: :symbol
@@ -44,6 +50,7 @@ contents.each do |row|
 	name = row[:first_name]
 	zipcode = clean_zipcode(row[:zipcode])
 	legislators = legislators_by_zipcode(zipcode)
+	phone_number = clean_phone_number(row[:homephone])
 	
 	form_letter = erb_template.result(binding)
 

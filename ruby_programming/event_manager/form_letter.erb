@@ -26,5 +26,10 @@
       <td><%= "#{legislators}" %></td>
     <% end %>
   </table>
+
+  <br>
+  <% unless phone_number.nil? %>
+    <p>You have signed up for mobile alerts at <%= "#{phone_number}." %></p>
+  <% end %>
 </body>
 </html>
