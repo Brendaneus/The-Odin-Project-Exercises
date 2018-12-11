@@ -1,0 +1,1 @@
+{"secret_word":"ALPHABET","letters":["A","E","I","O","U"],"words":["WORD"],"chances":5}
