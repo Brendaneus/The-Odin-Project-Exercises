@@ -20,5 +20,5 @@ def merge_sort arr
 	return arr_C
 end
 
-puts "[5,4,3,2,1,0] sorted is #{merge_sort [5,4,3,2,1,0]}\n"
-puts "[3,6,21,-1,5092] sorted is #{merge_sort [3,6,21,-1,5092]}"
+puts "[5, 4, 3, 2, 1, 0] sorted is #{merge_sort [5,4,3,2,1,0]}\n"
+puts "[6, 21, -1, 5092, 3] sorted is #{merge_sort [3,6,21,-1,5092]}"
