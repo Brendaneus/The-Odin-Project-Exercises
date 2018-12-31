@@ -37,14 +37,14 @@ module Enumerable
 		if self.is_a? Array
 			my_arr = []
 			for x in self
-				my_arr.push if yield x
+				my_arr.push x if yield x
 			end
 			return my_arr
 		end
 		if self.is_a? Hash
 			my_hash = {}
 			for x, y in self
-				my_hash.push if yield x, y
+				my_hash[x] = y if yield x, y
 			end
 			return my_hash
 		end
@@ -83,11 +83,11 @@ module Enumerable
 			end
 		end
 		if self.is_a? Hash
-			for x, y in self
+			for pair in self
 				if block_given?
-					return true if yield y
+					return true if yield pair[0], pair[1]
 				else
-					return true if y
+					return true if pair
 				end
 			end
 		end
@@ -116,10 +116,15 @@ module Enumerable
 		return true
 	end
 
+	# count by total elements, elements passing block, or elements matching target
 	def my_count target=nil
 		i = 0
 		if block_given? && target
-			throw Error.new "Can't use argument AND block"
+			###
+			puts "\nERROR IN #MY_COUNT:\n--can't pass argument and block"
+			return -1
+			###
+			# throw Error.new "Can't use argument AND block" # How to adapt this for rspec ???
 		elsif block_given? || target
 			if self.is_a? Array
 				for x in self
@@ -131,11 +136,11 @@ module Enumerable
 				end
 			end
 			if self.is_a? Hash
-				for x, y in self
+				for pair in self
 					if block_given?
-						i += 1 if yield y
+						i += 1 if yield pair[0], pair[1]
 					else
-						i += 1 if y == target
+						i += 1 if pair == target
 					end
 				end
 			end
@@ -157,9 +162,9 @@ module Enumerable
 		end
 		if self.is_a? Hash
 			my_hash = {}
-			for x, y in self
-				my_hash[x] = yield y unless my_proc
-				my_hash[x] = my_proc.call(y) if my_proc
+			for pair in self
+				my_hash[pair[0]] = yield pair[0], pair[1] unless my_proc
+				my_hash[pair[0]] = my_proc.call(pair[0],pair[1]) if my_proc
 			end
 			return my_hash
 		end
@@ -174,8 +179,8 @@ module Enumerable
 				end
 			end
 			if self.is_a? Hash
-				for x, y in self
-					total = total.public_send(arg2, y)
+				for pair in self
+					total = total.public_send(arg2, pair[1])
 				end
 			end
 		elsif arg1 && block_given?
@@ -186,8 +191,8 @@ module Enumerable
 				end
 			end
 			if self.is_a? Hash
-				for x, y in self
-					total = yield total, y
+				for pair in self
+					total = yield total, pair[1]
 				end
 			end
 		elsif arg1
@@ -198,9 +203,9 @@ module Enumerable
 				end
 			end
 			if self.is_a? Hash
-				for x, y in self
-					total = total.public_send(arg1, self[x]) if total
-					total ||= y
+				for pair in self
+					total = total.public_send(arg1, pair[1]) if total
+					total ||= pair[1]
 				end
 			end
 		else
@@ -211,9 +216,9 @@ module Enumerable
 				end
 			end
 			if self.is_a? Hash
-				for x, y in self
-					total = yield total, y if total
-					total ||= y
+				for pair in self
+					total = yield total, pair[1] if total
+					total ||= pair[1]
 				end
 			end
 		end
@@ -221,6 +226,6 @@ module Enumerable
 	end
 end
 
-my_hash = {a: 1, b: 3, c: 9}
-my_proc = Proc.new {|x| x ** x}
-p my_array.my_map(&my_proc) {|x| x * -1} #SyntaxError: both block arg and actual block given -- ruby 2.3.7p456 (2018-03-28 revision 63024) [x86_64-linux] Ubuntu 18.04
+# my_hash = {a: 1, b: 3, c: 9}
+# my_proc = Proc.new {|x| x ** x}
+# p my_array.my_map(&my_proc) {|x| x * -1} #SyntaxError: both block arg and actual block given -- ruby 2.3.7p456 (2018-03-28 revision 63024) [x86_64-linux] Ubuntu 18.04
