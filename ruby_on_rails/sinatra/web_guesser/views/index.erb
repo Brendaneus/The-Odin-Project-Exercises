@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<style>
+			body {
+				background: <%= bg_color %>;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="/">GO HOME</a>
+
+		<% unless message.nil? %>
+			<p>
+				<%= message %>
+			</p>
+		<% end %>
+
+		<% if params['guess'] == number or params['cheat'] %>
+			<p>
+				"The secret number is <%= number %>"
+			</p>
+		<% end %>
+
+		<form>
+			<input type="text" name="guess">
+			<input type="submit" value="Guess!">
+		</form>
+	</body>
+</html>
