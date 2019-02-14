@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+	<%= f.label "username", "Your user name here" %>
+	<%= f.text_field "username" %>
+	<%= f.label "email", "Email" %>
+	<%= f.text_field "email", value: "example@example.com" %>
+	<%= f.label "password", "Password" %>
+	<%= f.password_field "password", value: "ssh" %>
+	<%= f.submit %>
+<% end %>
+
+<%= render 'errors' %>
