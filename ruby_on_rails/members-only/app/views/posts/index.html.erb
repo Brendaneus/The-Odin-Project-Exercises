@@ -1,0 +1,11 @@
+<%= link_to "New Post", new_post_path if @user %>
+
+<% @posts.each do |post| %>
+	<h2><%= post.title %></h2>
+	<% if @user %>
+		<h3>By: <%= post.user.name %></h3>
+	<% end %>
+	<p><%= post.body %></p>
+	<br/>
+	<hr/>
+<% end %>
