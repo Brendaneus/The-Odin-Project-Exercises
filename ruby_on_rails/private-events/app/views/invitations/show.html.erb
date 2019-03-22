@@ -1,0 +1,7 @@
+<h1>You are Invited:</h1>
+<h2><%= link_to @event.name, event_path( @event ) %></h2>
+<br>
+<h3>From: <%= link_to @inviter.name, user_path( @inviter ) %></h3>
+<br>
+<%= link_to "Accept", "/events/#{ @event.id }/attend/#{ current_user.id }" %> |
+<%= link_to "Decline", invitation_path( @invitation ), method: :delete %>

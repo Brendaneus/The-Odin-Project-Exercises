@@ -1,0 +1,9 @@
+<h1>Invitations</h1>
+<% if @invitations.any? %>
+	<% @invitations.each do |invitation| %>
+		<%= link_to invitation.event.name, invitation_path( invitation ) %>
+		<hr>
+	<% end %>
+<% else %>
+	<h3>There isn't anything here...</h3>
+<% end %>

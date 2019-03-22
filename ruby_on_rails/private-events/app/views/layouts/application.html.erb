@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to "Events", events_path %>
+      <%= link_to "invitations", invitations_path %> |
+      <% if logged_in? %>
+        <%= link_to current_user.name, user_path( current_user ), style: 'text-align: right' %>
+        <%= link_to "Sign out", signout_path, method: :delete, style: 'text-align: right' %>
+      <% else %>
+        <%= link_to "Sign up", new_user_path, style: 'text-align: right' %>
+        <%= link_to "Sign in", signin_path, style: 'text-align: right' %>
+      <% end %>
+    </nav>
+    <hr>
+    <% flash.each do |key, msg| %>
+      <li><%= msg %></li>
+    <%end %>
+    <hr>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<h1><%= @event.name %></h1>
+<h2>
+	<% if hosting? @event %>
+		You <%= (@event.date.past?) ? "hosted" : "are hosting" %> this event
+	<% else %>
+		Hosted by <%= link_to @event.creator.name, user_path( @event.creator ) %>
+	<% end %>
+	<% unless @event.date.nil? %>
+		 on <%= @event.date %>
+	<% end %>
+</h2>
+<p><%= @event.description %></p>
+<% unless @event.date.past? %>
+	<%= link_to "Attend this Event", "/events/#{@event.id}/attend/#{current_user.id}" if ( hosting? @event ) && ( !attending? @event ) %>
+	<%= link_to "Unattend this Event", "/events/#{@event.id}/unattend/#{current_user.id}", method: :delete if attending? @event %>
+	<% if hosting? @event %>
+		<br>
+		<%= link_to "Invite a User", new_event_invitation_path( @event ) %>
+		<h3>Current Invitations:</h3>
+		<% if @invitations.any? %>
+			<ul>
+				<% @invitations.each do |invitation| %>
+					<li><%= invitation.invitee.name %> -- <%= link_to "Delete this invitation", invitation_path( invitation ), method: :delete %> </li>
+				<% end %>
+			</ul>
+		<% else %>
+			<h4>There aren't any invitations out now.</h4>
+		<% end %>
+	<% end %>
+<% end %>
+<h3><%= @event.date.past? ? "Attended:" : "Attending:" %></h3>
+<% if @event.attendees.any? %>
+	<ul>
+		<% @event.attendees.each do |attendee| %>
+			<li><%= link_to attendee.name, user_path( attendee ) %></li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>No one <%= @event.date.past? ? "attended this event" : "is attending this event right now." %></p>
+<% end %>

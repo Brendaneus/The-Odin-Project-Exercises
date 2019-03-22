@@ -1,0 +1,10 @@
+<h1>Create an Invitation</h1>
+<h2><%= @event.name %></h2>
+<br>
+<%= render 'errors' if @invitation.errors.any? %>
+<%= form_for [@event, @invitation] do |f| %>
+	<%= f.label :invitee_id %>
+	<%= f.select :invitee_id, User.all.collect { |user| [user.name, user.id] } %>
+
+	<%= f.submit %>
+<% end %>

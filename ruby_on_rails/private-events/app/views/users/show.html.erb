@@ -1,0 +1,47 @@
+<h1>Account Page of <%= @user.name %></h1>
+<hr>
+<% if @user.created_events.any? %>
+	<h2>Created Events</h2>
+	<% @created_events.each do |event| %>
+		<h3><%= link_to event.name, event_path( event ) %></h3>
+		<% unless event.date.nil? %>
+			<% if event.date.past? %>
+				<h4>Hosted on <%= event.date %></h4>
+			<% else %>
+				<h4>Hosting on <%= event.date %></h4>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+<% if @user.upcoming_events.any? %>
+	<h2>Upcoming Events</h2>
+	<% @user.upcoming_events.each do |event| %>
+		<h3><%= link_to event.name, event_path( event ) %></h3>
+		<h4>
+			<% if hosting? event %>
+				You are hosting this event
+			<% else %>
+				Hosted by <%= link_to event.creator.name, user_path( event.creator ) %>
+			<% end %>
+			<% unless event.date.nil? %>
+				 on <%= event.date %>
+			<% end %>
+		</h4>
+	<% end %>
+<% end %>
+<% if @user.previous_events.any? %>
+	<h2>Previous_Events</h2>
+	<% @user.previous_events.each do |event| %>
+		<h3><%= link_to event.name, event_path( event ) %></h3>
+		<h4>
+			<% if hosting? event %>
+				You hosted this event
+			<% else %>
+				Hosted by <%= link_to event.creator.name, user_path( event.creator ) %>
+			<% end %>
+			<% unless event.date.nil? %>
+				 on <%= event.date %>
+			<% end %>
+		</h4>
+	<% end %>
+<% end %>

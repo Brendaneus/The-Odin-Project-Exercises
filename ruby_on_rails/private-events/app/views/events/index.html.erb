@@ -1,0 +1,38 @@
+<%= link_to "New Event", new_event_path if logged_in? %>
+<h2>Upcoming Events</h2>
+<% if @upcoming_events.any? %>
+	<% @upcoming_events.each do |event| %>
+		<h2><%= link_to event.name, event_path( event ) %></h2>
+		<h4>
+			<% if hosting? event %>
+				You are hosting this event
+			<% else %>
+				Hosted by <%= link_to event.creator.name, user_path( event.creator ) %>
+			<% end %>
+			<% unless event.date.nil? %>
+				 on <%= event.date %>
+			<% end %>
+		</h4>
+	<% end %>
+<% else %>
+	<h3>There aren't any events scheduled now...</h3>
+<% end %>
+<br>
+<h2>Previous Events</h2>
+<% if @previous_events.any? %>
+	<% @previous_events.each do |event| %>
+		<h2><%= link_to event.name, event_path( event ) %></h2>
+		<h4>
+			<% if hosting? event %>
+				You hosted this event
+			<% else %>
+				Hosted by <%= link_to event.creator.name, user_path( event.creator ) %>
+			<% end %>
+			<% unless event.date.nil? %>
+				 on <%= event.date %>
+			<% end %>
+		</h4>
+	<% end %>
+<% else %>
+	<h3>Nothing has happened yet!</h3>
+<% end %>
