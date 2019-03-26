@@ -1,0 +1,18 @@
+<% if @flights %>
+	<%= form_tag new_booking_path, method: :get do %>
+		<%= hidden_field_tag :passengers, params[:passengers].to_i %>
+		<%= submit_tag "Book a Flight" %>
+		<% @flights.each do |flight| %>
+			<h3><%= "Flight ##{flight.id}" %></h3>
+			<ul>
+				<li><%= "ORIGIN: #{flight.origin.code}" %></li>
+				<li><%= "DESTINATION: #{flight.destination.code}" %></li>
+				<li><%= "DEPARTING AT: #{flight.departure_formatted}" %></li>
+				<li><%= "DURATION: #{flight.duration_in_words}" %></li>
+			</ul>
+			<%= radio_button_tag :flight_id, flight.id %>
+			<%= label_tag :flight_id, "Book this flight" %>
+			<hr>
+		<% end %>
+	<% end %>
+<% end %>

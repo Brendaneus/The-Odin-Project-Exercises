@@ -1,0 +1,15 @@
+<h1><%= "Create a Booking for Flight ##{@flight.id}" %></h1>
+<ul>
+	<li>
+		<h3>Departing: <%= @flight.origin.code %></h3>
+		at <strong><%= @flight.departure %></strong>
+	</li>
+	<li>
+		<h3>Arriving: <%= @flight.destination.code %></h3>
+		at <strong><%= @flight.departure + @flight.duration %></strong>
+	</li>
+	<li>
+		<h3>Duration: <%= @flight.duration_in_words %></h3>
+	</li>
+</ul>
+<hr>

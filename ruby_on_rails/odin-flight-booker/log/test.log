@@ -1,0 +1,71 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "airports"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "flights"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("code", "created_at", "updated_at", "id") VALUES ('MyString', '2019-03-24 21:15:22.877518', '2019-03-24 21:15:22.877518', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("code", "created_at", "updated_at", "id") VALUES ('MyString', '2019-03-24 21:15:22.877518', '2019-03-24 21:15:22.877518', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "flights" ("departure", "duration", "created_at", "updated_at", "id", "origin_id", "destination_id") VALUES ('2019-03-24 14:36:33', 1, '2019-03-24 21:15:22.879193', '2019-03-24 21:15:22.879193', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "flights" ("departure", "duration", "created_at", "updated_at", "id", "origin_id", "destination_id") VALUES ('2019-03-24 14:36:33', 1, '2019-03-24 21:15:22.879193', '2019-03-24 21:15:22.879193', 298486374, 298486374, 298486374)[0m
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+FlightsControllerTest: test_should_get_index
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "airports"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "airports" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "bookings"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "flight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX "index_bookings_on_flight_id" ON "bookings" ("flight_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "flights"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "flights" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "origin_id" integer, "destination_id" integer, "departure" datetime, "duration" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX "index_flights_on_destination_id" ON "flights" ("destination_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX "index_flights_on_origin_id" ON "flights" ("origin_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "passengers"[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "passengers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "booking_id" integer, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE  INDEX "index_passengers_on_booking_id" ON "passengers" ("booking_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190325224745)[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190325224204),
+(20190324203633),
+(20190324182624);
+
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-03-26 06:10:05.251623"], ["updated_at", "2019-03-26 06:10:05.251623"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "airports"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "passengers"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "flights"[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "bookings"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("code", "created_at", "updated_at", "id") VALUES ('MyString', '2019-03-26 06:10:05.306962', '2019-03-26 06:10:05.306962', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "airports" ("code", "created_at", "updated_at", "id") VALUES ('MyString', '2019-03-26 06:10:05.306962', '2019-03-26 06:10:05.306962', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "id", "booking_id") VALUES ('MyString', 'MyString', '2019-03-26 06:10:05.310910', '2019-03-26 06:10:05.310910', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "passengers" ("name", "email", "created_at", "updated_at", "id", "booking_id") VALUES ('MyString', 'MyString', '2019-03-26 06:10:05.310910', '2019-03-26 06:10:05.310910', 298486374, 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "flights" ("departure", "duration", "created_at", "updated_at", "id", "origin_id", "destination_id") VALUES ('2019-03-24 14:36:33', 1, '2019-03-26 06:10:05.313715', '2019-03-26 06:10:05.313715', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "flights" ("departure", "duration", "created_at", "updated_at", "id", "origin_id", "destination_id") VALUES ('2019-03-24 14:36:33', 1, '2019-03-26 06:10:05.313715', '2019-03-26 06:10:05.313715', 298486374, 298486374, 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "id", "flight_id") VALUES ('2019-03-26 06:10:05.316261', '2019-03-26 06:10:05.316261', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (1.2ms)[0m  [1m[32mINSERT INTO "bookings" ("created_at", "updated_at", "id", "flight_id") VALUES ('2019-03-26 06:10:05.316261', '2019-03-26 06:10:05.316261', 298486374, 298486374)[0m
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+BookingsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m

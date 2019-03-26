@@ -1,0 +1,17 @@
+<h1><%= search_title_builder %></h1>
+
+<%= form_tag flights_path, method: :get do |f| %>
+	<%= label_tag :origin, "FROM:" %>
+	<%= select_tag :origin, options_for_select( @airport_options ), { prompt: "" } %>
+
+	<%= label_tag :destination, "TO:" %>
+	<%= select_tag :destination, options_for_select( @airport_options ), { prompt: "" } %>
+
+	<%= label_tag :passengers, "PASSENGERS:" %>
+	<%= select_tag :passengers, options_for_select( [1,2,3,4] ), { prompt: "" } %>
+
+	<%= label_tag :departure, "DATE:" %>
+	<%= select_tag :departure, options_for_select( @flight_time_options ), { prompt: "" } %>
+
+	<%= submit_tag "Search Flights" %>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>Booking for Flight #<%= @booking.flight.id %></h1>
+<ul>
+	<li>
+		<h3>Departing: <%= @booking.flight.origin.code %></h3>
+		at <strong><%= @booking.flight.departure %></strong>
+	</li>
+	<li>
+		<h3>Arriving: <%= @booking.flight.destination.code %></h3>
+		at <strong><%= @booking.flight.departure + @booking.flight.duration %></strong>
+	</li>
+	<li>
+		<h3>Duration: <%= @booking.flight.duration_in_words %></h3>
+	</li>
+</ul>
+<h2><%= "Passenger".pluralize(@booking.passengers.count) + ( (@booking.passengers.count > 1) ? " (#{@booking.passengers.count}):" : ':' ) %></h2>
+<ul>
+	<% @booking.passengers.each do |passenger| %>
+		<li><h3><%= passenger.name %></h3>
+			<strong>Email: </strong><%= passenger.email %></li>
+	<% end %>
+</ul>
