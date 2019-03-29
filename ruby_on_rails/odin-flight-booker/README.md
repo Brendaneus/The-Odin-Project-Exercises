@@ -18,15 +18,14 @@ Hosted @ [Heroku](https://intense-sea-16053.herokuapp.com)
 * **HAS_MANY** Bookings
 <details>
 	<summary>_**IMPORTANT NOTE**_</summary>
-	The above two airport references have custom naming schemes in their table, but still enforce referential integrity (foreign_key: true).  Rails generates this by default, expecting the column names to match their reference table (ie.- destination_id column associates with the destination table), but here the naming scheme is aliased, so the foreign_keys don't work right.  For some reason, SQLite3 doesn't have a problem with this, but PostGreSQL won't migrate.  The solution -- to specify the actual table -- is in the Flights migration.  See the docs for it [here](https://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_foreign_key) (first sentence) and [here](https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-add_reference) (bottom of section).  Make sure the format is like as shown -- a hash within a hash.
+	<p>The above two airport references have custom naming schemes in their table, but still enforces referential integrity with <code>foreign_key: {to_table: :airports }</code>.  The <code>to_table</code> part is important because the other table in the association does not match the naming scheme used for the foreign keys here.</p>
+	<p>Rails generates this reference as <code>foreign_key: true</code> by default, expecting the column names to match their reference table (ie.- <code>destination_id</code> column associates with the table <code>destinations</code>), but here the naming scheme is aliased, so the <code>foreign_key: true</code> doesn't work right.  For some reason at the time of this writing, SQLite3 doesn't have a problem with this, but when pushing to Heroku and migrating, PostGreSQL hits an error finding the right table.  The solution -- to specify the actual table -- is in the <a href='https://github.com/Brendaneus/the_odin_project/blob/master/ruby_on_rails/odin-flight-booker/db/migrate/20190324203633_create_flights.rb'>Flights migration file</a>.</p>
+	<p>See the docs for it <a href='https://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_foreign_key'>here</a> (first sentence) and <a href='https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-add_reference'>here</a> (bottom of section).  Make sure the format is like as shown -- a hash within a hash.</p>
 </details>
 
 ##### Bookings
 * **BELONGS_TO** Flight
-* **BELONGS_TO** Passenger
-* **BELONGS_TO** Payment Method _(**Note:** This may be changed to HABTM for split transactions)_
-Airport information can be gathered through the Flight associations here
+* **HAS_MANY** Passengers
 
 ##### Passengers
-* **HAS_MANY** Payment Methods
-* **BELONGS_TO** Bookings
+* **BELONGS_TO** Booking
