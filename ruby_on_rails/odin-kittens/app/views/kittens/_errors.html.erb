@@ -1,0 +1,9 @@
+<% if @kitten.errors.any? %>
+	<h3>Reasons Why We Can't Have Nice Things:</h3>
+	<ol>
+		<% @kitten.errors.keys.each do |key| %>
+			<li><%= @kitten.errors.full_messages_for(key).first %></li>
+		<% end %>
+	</ol>
+	<hr>
+<% end %>

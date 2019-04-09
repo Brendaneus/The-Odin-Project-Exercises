@@ -1,0 +1,7 @@
+<h1>Kittens</h1>
+<%= link_to "Create a Kitten", new_kitten_path %>
+<ul>
+	<% @kittens.each do |kitten| %>
+		<li><%= link_to kitten.name, kitten %> | <%= link_to "Delete this Kitten", kitten_path(kitten), method: :delete %></li>
+	<% end %>
+</ul>

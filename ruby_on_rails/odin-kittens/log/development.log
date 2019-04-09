@@ -1,0 +1,2114 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateKittens (20190408125430)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateKittens (20190408125542)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190408125542_create_kittens.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190408125542"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 12:55:46.960329"], ["updated_at", "2019-04-08 12:55:46.960329"]]
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2019-04-08 08:07:49 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/overseer/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by KittensController#index as HTML
+Completed 406 Not Acceptable in 23ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (KittensController#index is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-04-08 08:09:19 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:1
+  Rendered kittens/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 1271ms (Views: 1269.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:12:45 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 40ms (Views: 31.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:13:12 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XEyAYSTc42vX3Nwie3DFuR9VqRNjd3adK5Xc/QuD2/CD28ak4ZnESLJbGH+zwuxy+xA69yCi4g1hlXVw40ZpKw==", "kitten"=>{"name"=>"kitty", "age"=>"21", "cuteness"=>"9", "softness"=>"11"}, "commit"=>"Create Kitten"}
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `kitten_params' for #<KittensController:0x00007f49d41072d0>):
+  
+app/controllers/kittens_controller.rb:16:in `create'
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:13:59 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XEyAYSTc42vX3Nwie3DFuR9VqRNjd3adK5Xc/QuD2/CD28ak4ZnESLJbGH+zwuxy+xA69yCi4g1hlXVw40ZpKw==", "kitten"=>{"name"=>"kitty", "age"=>"21", "cuteness"=>"9", "softness"=>"11"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kitty"], ["age", 21], ["cuteness", 9], ["softness", 11], ["created_at", "2019-04-08 13:13:59.890705"], ["updated_at", "2019-04-08 13:13:59.890705"]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+Redirected to http://localhost:3000/kittens/1
+Completed 302 Found in 20ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:13:59 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+Completed 406 Not Acceptable in 13ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionController::UnknownFormat (KittensController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:14:11 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.8ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:1
+  Rendered kittens/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:15:10 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:2
+  Rendered kittens/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:15:27 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:1
+  Rendered kittens/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:15:33 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:2
+  Rendered kittens/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:16:23 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:18:41 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:18:41 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:18:52 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:18:56 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:18:58 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:21:32 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.3ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:21:33 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.6ms)
+  Rendered kittens/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:21:35 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:22:24 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/1/edit" for 127.0.0.1 at 2019-04-08 08:22:25 -0500
+Processing by KittensController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:27
+  Rendering kittens/edit.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.4ms)
+  Rendered kittens/edit.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:22:28 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:22:29 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:22:32 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (3.7ms)
+  Rendered kittens/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/kittens/1" for 127.0.0.1 at 2019-04-08 08:22:34 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/1/edit" for 127.0.0.1 at 2019-04-08 08:22:35 -0500
+Processing by KittensController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:27
+  Rendering kittens/edit.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/edit.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:25:04 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/kittens/1" for 127.0.0.1 at 2019-04-08 08:25:05 -0500
+Processing by KittensController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lhmAam6BjgzAqjjrhgOMH3FlwipybuWA+2DhAnPEM6JJjsavq8SpL6Ut/LZOsaXUlSBRzjG7cRCxYEiPmwGBeQ==", "id"=>"1"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:42
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[36mKitten Destroy (1.2ms)[0m  [1m[31mDELETE FROM "kittens" WHERE "kittens"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+Redirected to http://localhost:3000/kittens
+Completed 302 Found in 8ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:25:05 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:25:09 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:25:14 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wbETiVpy3ALlZeaoF3Yn+YBLk4gxTDcVrnShKFvoE0+i+/YdWbWbKoBmBw1M4Tx9iWninf+qIwMIdkSZlNjmQg==", "kitten"=>{"name"=>"sdafasdf", "age"=>"324", "cuteness"=>"54", "softness"=>"3"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Create (0.7ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sdafasdf"], ["age", 324], ["cuteness", 54], ["softness", 3], ["created_at", "2019-04-08 13:25:14.709395"], ["updated_at", "2019-04-08 13:25:14.709395"]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+Redirected to http://localhost:3000/kittens/2
+Completed 302 Found in 7ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/kittens/2" for 127.0.0.1 at 2019-04-08 08:25:14 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/2/edit" for 127.0.0.1 at 2019-04-08 08:25:18 -0500
+Processing by KittensController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mKitten Load (0.3ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:27
+  Rendering kittens/edit.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (1.9ms)
+  Rendered kittens/edit.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/kittens/2" for 127.0.0.1 at 2019-04-08 08:25:19 -0500
+Processing by KittensController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xFYY53DNpmEQekHlCvfNkts+P8CNbFY/s4wudLcYG0EbwV4itYiBQnX9hbjCReRZP3usJM65wq/5jIf5X92pmg==", "id"=>"2"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:42
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[36mKitten Destroy (0.2ms)[0m  [1m[31mDELETE FROM "kittens" WHERE "kittens"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+Redirected to http://localhost:3000/kittens
+Completed 302 Found in 5ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:25:19 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:29:21 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:29:25 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qpfi7EPEcfZ3mQMetcdwb4Oea6RNV7LmyyJG1g1pksMh3Qd4QAM23hKa4rvuUGvrirwasYOxpvBtIKNnwllnzg==", "kitten"=>{"name"=>"df", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Create (0.9ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "df"], ["created_at", "2019-04-08 13:29:25.598835"], ["updated_at", "2019-04-08 13:29:25.598835"]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+Redirected to http://localhost:3000/kittens/3
+Completed 302 Found in 7ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/kittens/3" for 127.0.0.1 at 2019-04-08 08:29:25 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mKitten Load (0.3ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/kittens/3" for 127.0.0.1 at 2019-04-08 08:29:27 -0500
+Processing by KittensController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SiVwKmAQs1kYQwWn37s8BK+mfPBc+x42vbyIzRIel5uVsjbvpVWUen3EwfoXCRXPS+PvFB8uiqb3vCFA+tslQA==", "id"=>"3"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:42
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[36mKitten Destroy (1.0ms)[0m  [1m[31mDELETE FROM "kittens" WHERE "kittens"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/kittens_controller.rb:43
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:43
+Redirected to http://localhost:3000/kittens
+Completed 302 Found in 8ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:29:27 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:56:35 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 44ms (Views: 30.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:56:38 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BTeyeHWhzmRD2d5ZfSF2hoThIzzJ23rappz0l9SxaPNmfVfsdmaJTCbaP/wmtm0CjcNSKQc9bswAnhEmG4Gd/g==", "kitten"=>{"name"=>"sdfasd", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "sdfasd"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 26ms (Views: 21.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:57:36 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:57:37 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.8ms)
+  Rendered kittens/_form.html.erb (2.4ms)
+  Rendered kittens/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:57:41 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8W8OC3LA+dS1TsFq7DgenzKInVTbeCkI6nKJhk7grqiSJeufcQe+/NBNIM+3rwUbO6rsQRWePR5McGw3gdBbpQ==", "kitten"=>{"name"=>"d", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "d"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (101.3ms)
+  Rendered kittens/new.html.erb within layouts/application (102.1ms)
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `mag' for #<#<Class:0x00007f49d09c6910>:0x00007f49d6365d40>):
+    2: 	<h3>Reasons Why We Can't Have Nice Things:</h3>
+    3: 	<ol>
+    4: 		<% @kitten.errors.full_messages.reverse.each do |msg| %>
+    5: 			<li><%= mag %></li>
+    6: 		<% end %>
+    7: 	</ol>
+    8: 	<hr>
+  
+app/views/kittens/_errors.html.erb:5:in `block in _app_views_kittens__errors_html_erb__1443613382716856929_69977552917400'
+app/views/kittens/_errors.html.erb:4:in `each'
+app/views/kittens/_errors.html.erb:4:in `_app_views_kittens__errors_html_erb__1443613382716856929_69977552917400'
+app/views/kittens/new.html.erb:3:in `_app_views_kittens_new_html_erb___941183734327130385_69977551611320'
+app/controllers/kittens_controller.rb:22:in `create'
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:58:38 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8W8OC3LA+dS1TsFq7DgenzKInVTbeCkI6nKJhk7grqiSJeufcQe+/NBNIM+3rwUbO6rsQRWePR5McGw3gdBbpQ==", "kitten"=>{"name"=>"d", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "d"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.1ms)
+  Rendered kittens/_form.html.erb (2.5ms)
+  Rendered kittens/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 37ms (Views: 31.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 08:59:14 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 35ms (Views: 31.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 08:59:16 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (30.7ms)
+  Rendered kittens/_form.html.erb (3.4ms)
+  Rendered kittens/new.html.erb within layouts/application (35.6ms)
+Completed 200 OK in 60ms (Views: 59.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 08:59:17 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UafXIoM6s2VydSZBCQtlejfMGPzwiz9JCiNS7eF8Hscy7TK2gP30TRd2x+RSnH7+Pu5p6T5tK1+sIbdcLkzryg==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 29ms (Views: 24.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:05:42 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ef8wu1mBymd9KEUcNaD9zTEf2//fsNhkL6roiOJHcbqmaHZ+nMTtRBivgUH9EtQG1VpIG5xlTPRlqkEFCoLDYQ==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.5ms)
+  Rendered kittens/_form.html.erb (2.6ms)
+  Rendered kittens/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 36ms (Views: 32.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:06:06 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:06:08 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.3ms)
+  Rendered kittens/_form.html.erb (2.8ms)
+  Rendered kittens/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:06:09 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S0Rqr3m7RmkqXSTZwEjPU/Xd17Fj7KlxRwHz3Jx5nf0oDo87enwBQU9exXyb39TX/P+mpK0KvWfhAxZtU0lo8A==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.3ms)
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 29ms (Views: 24.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:07:35 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YtN8/sKjuWPXf/inG1aPkQvizVN49nQr4jCPA2ladc+9RDo7B+aeQLL4PPrT5KZa76detzsj4LuoMCaOgZ/HFA==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.4ms)
+  Rendered kittens/_form.html.erb (2.3ms)
+  Rendered kittens/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:08:36 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 21ms (Views: 16.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:08:37 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.3ms)
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 32ms (Views: 23.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:08:37 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zf01Im3Z3t9Zf43jiHg4tmslKwOC15wpYWcmHoEUUBmut9C2bh6Z9zx8bEbT7yMyYgdaFkwxiD/HZcOvTiSlFA==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.6ms)
+  Rendered kittens/_form.html.erb (2.4ms)
+  Rendered kittens/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 32ms (Views: 26.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:08:50 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+VddQ6ujnUsACPPruq+q7OiVgSxOR+geQ8o8/jLNIHAmwBuGbua6aGWPN7ZyHYMnDNASyA2SfI4JypVz2giSqw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.3ms)
+  Rendered kittens/_form.html.erb (4.1ms)
+  Rendered kittens/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 39ms (Views: 19.7ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:10:52 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LFL9Y/hLa4KXoRCQ5DEXUzCY15iVrEc3/9N0fOA6HXzzxbumPQ5MofIm1M0sgz6Y1N1EfNZ506e1093xCP+vpw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.1ms)
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 34ms (Views: 15.9ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:11:41 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dv8uf7ZdmgJjcf70jnxYpv/aSVr9areuXCISrEMAMiKpaGi6cxi9IQb2OqlGznFtG5/avr6/Iz4WIrshq8WA+Q==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.3ms)
+  Rendered kittens/_form.html.erb (3.2ms)
+  Rendered kittens/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 33ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:11:58 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:11:59 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.3ms)
+  Rendered kittens/_form.html.erb (2.7ms)
+  Rendered kittens/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 41ms (Views: 31.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:12:00 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TMUSOIeBlPV8jXcmme8n5Zy5qecUlLE6CZ6l7D3bNiWefHc4dlBe7Dx1HnB8Kcbn1CXslK0RtJOJJ8mf8eZ1Q==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 30ms (Views: 25.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:12:07 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SuGX5kt8opYb73f9EefrSsN6LVqNkhHWs70Sgpf1mMSVdtEjjjmFtX5os6DZVcKBJz++vs5HhUb5vbsPfzAqHw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.4ms)
+  Rendered kittens/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 43ms (Views: 22.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:13:06 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"crQ2xv7e39QVNdQQC74eJRBTcTOq5pVKM4V1/eH+JuitI3ADO5v493CyEE3DDDfu9Bbi1+kzAdp5hdxwCTuUMw==", "kitten"=>{"name"=>"z", "age"=>"90", "cuteness"=>"0", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "z"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.8ms)
+  Rendered kittens/_form.html.erb (4.1ms)
+  Rendered kittens/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:13:11 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R6IbMBIG4qV/NeUu3lH/bYKIuqlPjvKjTFZUggiayvSYNV3110PFhhqyIXMW49amZs0pTQxbZjMGVv0P4F94Lw==", "kitten"=>{"name"=>"z", "age"=>"90", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "z"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.8ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 26ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:13:16 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rKSsZvbKVd5lBeArvlUdhm9qBniZRaI/VZST4L+q3UBzM+qjM49y/QCCJHZ25zRNiy+VnNqQNq8flDptV29vmw==", "kitten"=>{"name"=>"z", "age"=>"90", "cuteness"=>"0", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "z"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.6ms)
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 20ms (Views: 17.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:13:19 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DkWgkOGMVXi0dDmEWpHiTDvH3SF+Q3t5QeugY3XnmmTR0uZVJMlyW9Hz/dmSI8uH34JOxT2W7+kL6wnunSIovw==", "kitten"=>{"name"=>"z", "age"=>"90", "cuteness"=>"11", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "z"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.7ms)
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:14:35 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:14:36 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.4ms)
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:14:36 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"phM+SNxR2OHAm591XF8ljGo5w3mVCedebZho9TYAl37FWdvc35afyaWYftAHyD4IYxuybFvv80jLmo1E+TBicw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (3.6ms)
+  Rendered kittens/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 25ms (Views: 20.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:14:43 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s9lrIVRKJAaKQlLkruKK8gaak9F0Nj6uFFwiw7Doqy5sTi3kkQ8DJe/FlrlmUKM54t8ANTfjqj5eXItOWC0Z9Q==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (3.3ms)
+  Rendered kittens/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 42ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:15:09 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:15:10 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.3ms)
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:15:11 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qCb1ysNqrDGQ3XivftkSYGgeFFy24+6yoRXyzlkt5arLbBBewK3rGfXemQolTgnkYTxlSXgF+qQHFxd/lh0Qpw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.9ms)
+  Rendered kittens/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 23ms (Views: 18.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:15:29 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.3ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:15:31 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.3ms)
+  Rendered kittens/_form.html.erb (1.9ms)
+  Rendered kittens/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 52ms (Views: 51.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:15:31 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y60RxODoCwMk1vsurBp6etnOuuNCm2LtaI2mMLqZcTAA5/RQ4y9MK0HVGov3jWH+0OzL9ox9dvvOj0OBdamEPQ==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 34ms (Views: 28.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:15:37 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XKQSVzBDMB2IOXV1iOPdRcTipTAu4p7xcz7XqNCWwV+DM1SS9QYXPu2+sShAUfSOIKc21G03CmE5Pn4lOFNzhA==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 54ms (Views: 49.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:22:07 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pmDV5/bDOJEI5nKBST4xMQasyrAg2ib5/IdaDzQH98h595MiM4Yfsm1httyBjBj64ulZVGMPsmm2h/OC3MJFEw==", "kitten"=>{"name"=>"", "age"=>"", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.6ms)
+  Rendered kittens/_form.html.erb (2.2ms)
+  Rendered kittens/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 39ms (Views: 22.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:22:48 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8Hp/uwp2hHDB765R632NUT/ckW8u6yn+1ogpvwo/9iIv7Tl+zzOjU6Roagwjz6Sa25kCi20+vW6ciIAy4vpE+Q==", "kitten"=>{"name"=>"b", "age"=>"b", "cuteness"=>"b", "softness"=>"b"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "b"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (3.2ms)
+  Rendered kittens/new.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 32ms (Views: 27.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:23:21 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qgnfv+VpV1Cbs56wh55Ky5nEfrqsTqFxwVaOHP6xPJ6dnpl6ICxwc/40Wu1PLGMAfYHtXu+bNeGLVieRFnSORQ==", "kitten"=>{"name"=>"klklsdfj;lalkjf;", "age"=>"1000", "cuteness"=>"0", "softness"=>"11"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "klklsdfj;lalkjf;"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.9ms)
+  Rendered kittens/_form.html.erb (2.0ms)
+  Rendered kittens/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 27ms (Views: 22.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:30:08 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JAZMrQCgr4/e0oV1mP9kI2qUtXkPmJMqS8D36SMP3sz7kQpoxeWIrLtVQShQTU3ojtEmnUxNB7oBwF5ky8psFw==", "kitten"=>{"name"=>"klklsdfj;lalkjf;", "age"=>"1000", "cuteness"=>"", "softness"=>"11"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "klklsdfj;lalkjf;"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.9ms)
+  Rendered kittens/_form.html.erb (3.5ms)
+  Rendered kittens/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:30:13 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yLzmhtFMgAdavrFaAkCIxMmEJCHtGAv0BPSaavDXAXgXK6BDFAmnJD85dQfK8qEPLcG3xa7Nn2RO9DPnGBKzow==", "kitten"=>{"name"=>"klklsdfj;lalkjf;", "age"=>"1000", "cuteness"=>"2", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "klklsdfj;lalkjf;"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.8ms)
+  Rendered kittens/_form.html.erb (3.2ms)
+  Rendered kittens/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 31ms (Views: 26.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:30:29 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cf5YqdjZ9zRCQj0Itx1V9p5E4dP4Uy5CDtxcbkEDvRGuaR5sHZzQFyfF+VV/r3w9egFyN7uGutJE3PXjqcYPyg==", "kitten"=>{"name"=>"klklsdfj;lalkjf;", "age"=>"1000", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "klklsdfj;lalkjf;"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (1.2ms)
+  Rendered kittens/_form.html.erb (2.1ms)
+  Rendered kittens/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 46ms (Views: 21.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:30:34 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"idhblbT+2yHbZ44tHYoJIcxNq7ADAwbjoQf4yQPgRY5WTx1Qcbv8Ar7gSnDVOCDqKAg4VEDWknPrB1FE6yX3VQ==", "kitten"=>{"name"=>"klklsdfj;lalkjf;", "age"=>"10", "cuteness"=>"", "softness"=>""}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "klklsdfj;lalkjf;"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.9ms)
+  Rendered kittens/_form.html.erb (1.8ms)
+  Rendered kittens/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:49:20 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zecHQNDzyWNa1vE6OmrjbgqfxmVqu5rMyXZdpY04suYScEGFFbbuQD9RNWfy2Mql7tpVgSluDlyDdvQoZf0APQ==", "kitten"=>{"name"=>"sample_cat", "age"=>"10", "cuteness"=>"5", "softness"=>"5"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "sample_cat"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Create (1.0ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sample_cat"], ["age", 10], ["cuteness", 5], ["softness", 5], ["created_at", "2019-04-08 14:49:20.992061"], ["updated_at", "2019-04-08 14:49:20.992061"]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+Redirected to http://localhost:3000/kittens/4
+Completed 302 Found in 12ms (ActiveRecord: 5.6ms)
+
+
+Started GET "/kittens/4" for 127.0.0.1 at 2019-04-08 09:49:21 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 29ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/4" for 127.0.0.1 at 2019-04-08 09:51:18 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:51:20 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/kittens/new" for 127.0.0.1 at 2019-04-08 09:52:05 -0500
+Processing by KittensController#new as HTML
+  Rendering kittens/new.html.erb within layouts/application
+  Rendered kittens/_errors.html.erb (0.4ms)
+  Rendered kittens/_form.html.erb (2.9ms)
+  Rendered kittens/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/kittens" for 127.0.0.1 at 2019-04-08 09:52:10 -0500
+Processing by KittensController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"foIqSiS5EnQdwVlTSSASCPIgNHKS/P0wizUYgWUmeaIdyM/eJ35VXHjCuPYStwmM+wJFZ1wa6SYtN/0wqhaMrw==", "kitten"=>{"name"=>"aaaaa", "age"=>"2", "cuteness"=>"2", "softness"=>"2"}, "commit"=>"Create Kitten"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "aaaaa"], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[36mKitten Create (1.2ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "aaaaa"], ["age", 2], ["cuteness", 2], ["softness", 2], ["created_at", "2019-04-08 14:52:10.720740"], ["updated_at", "2019-04-08 14:52:10.720740"]]
+  ↳ app/controllers/kittens_controller.rb:17
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/kittens_controller.rb:17
+Redirected to http://localhost:3000/kittens/5
+Completed 302 Found in 10ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/kittens/5" for 127.0.0.1 at 2019-04-08 09:52:10 -0500
+Processing by KittensController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" WHERE "kittens"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/kittens_controller.rb:8
+  Rendering kittens/show.html.erb within layouts/application
+  Rendered kittens/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 09:52:12 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 10:39:20 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/overseer/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by KittensController#index as */*
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.6ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 324ms (Views: 306.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 10:43:41 -0500
+Processing by KittensController#index as JSON
+Completed 406 Not Acceptable in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (KittensController#index is missing a template for this request format and variant.
+
+request.formats: ["application/json"]
+request.variant: []):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 10:44:24 -0500
+Processing by KittensController#index as XML
+Completed 406 Not Acceptable in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (KittensController#index is missing a template for this request format and variant.
+
+request.formats: ["application/xml"]
+request.variant: []):
+  
+actionpack (5.2.3) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.3) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.3) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.3) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.3) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.3) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.3) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.3) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.3) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.3) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.3) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 10:44:29 -0500
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/kittens" for 127.0.0.1 at 2019-04-08 10:52:32 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/overseer/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by KittensController#index as JSON
+  [1m[36mKitten Load (0.3ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/controllers/kittens_controller.rb:7
+Completed 200 OK in 18ms (Views: 9.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/kitten/1" for 127.0.0.1 at 2019-04-08 10:54:51 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/kitten/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kitten/2" for 127.0.0.1 at 2019-04-08 10:54:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/kitten/2"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kitten/3" for 127.0.0.1 at 2019-04-08 10:54:58 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/kitten/3"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/kitten/4" for 127.0.0.1 at 2019-04-08 10:55:01 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/kitten/4"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-04-08 11:12:05 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/overseer/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by KittensController#index as HTML
+  Rendering kittens/index.html.erb within layouts/application
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  ↳ app/views/kittens/index.html.erb:4
+  Rendered kittens/index.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 218ms (Views: 209.5ms | ActiveRecord: 0.6ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" ORDER BY "kittens"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:14:12.140532"], ["updated_at", "2019-04-08 16:14:12.140532"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:14:12.169066"], ["updated_at", "2019-04-08 16:14:12.169066"]]
+  ↳ db/schema.rb:13
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-08 16:14:12.175107"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" ORDER BY "kittens"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Load (0.1ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" ORDER BY "kittens"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:14:38.792695"], ["updated_at", "2019-04-08 16:14:38.792695"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:14:38.823714"], ["updated_at", "2019-04-08 16:14:38.823714"]]
+  ↳ db/schema.rb:13
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-08 16:14:38.830247"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:19:36.159107"], ["updated_at", "2019-04-08 16:19:36.159107"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "kittens"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "kittens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "cuteness" integer, "softness" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190408125542)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-08 16:19:36.187933"], ["updated_at", "2019-04-08 16:19:36.187933"]]
+  ↳ db/schema.rb:13
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-08 16:19:36.194749"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:3
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Kitty"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:3
+  [1m[36mKitten Create (0.5ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Kitty"], ["age", 21], ["cuteness", 10], ["softness", 10], ["created_at", "2019-04-08 16:19:36.229240"], ["updated_at", "2019-04-08 16:19:36.229240"]]
+  ↳ db/seeds.rb:3
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:3
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:4
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Snuffles"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:4
+  [1m[36mKitten Create (0.3ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Snuffles"], ["age", 6], ["cuteness", 9], ["softness", 7], ["created_at", "2019-04-08 16:19:36.233969"], ["updated_at", "2019-04-08 16:19:36.233969"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Fluffy"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:5
+  [1m[36mKitten Create (0.5ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Fluffy"], ["age", 14], ["cuteness", 5], ["softness", 9], ["created_at", "2019-04-08 16:19:36.238495"], ["updated_at", "2019-04-08 16:19:36.238495"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Dog"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:6
+  [1m[36mKitten Create (0.4ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Dog"], ["age", 11], ["cuteness", 3], ["softness", 2], ["created_at", "2019-04-08 16:19:36.243962"], ["updated_at", "2019-04-08 16:19:36.243962"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #0"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #0"], ["age", 4], ["cuteness", 6], ["softness", 3], ["created_at", "2019-04-08 16:22:35.637257"], ["updated_at", "2019-04-08 16:22:35.637257"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.7ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #1"], ["age", 11], ["cuteness", 5], ["softness", 6], ["created_at", "2019-04-08 16:22:35.643422"], ["updated_at", "2019-04-08 16:22:35.643422"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #2"], ["age", 7], ["cuteness", 9], ["softness", 5], ["created_at", "2019-04-08 16:22:35.648938"], ["updated_at", "2019-04-08 16:22:35.648938"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #3"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.7ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #3"], ["age", 2], ["cuteness", 3], ["softness", 7], ["created_at", "2019-04-08 16:22:35.654352"], ["updated_at", "2019-04-08 16:22:35.654352"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #4"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.6ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #4"], ["age", 6], ["cuteness", 7], ["softness", 2], ["created_at", "2019-04-08 16:22:35.659830"], ["updated_at", "2019-04-08 16:22:35.659830"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Load (0.4ms)[0m  [1m[34mSELECT  "kittens".* FROM "kittens" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mKitten Load (0.2ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #0"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #10"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (1.4ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #10"], ["age", 5], ["cuteness", 9], ["softness", 2], ["created_at", "2019-04-08 16:24:35.910516"], ["updated_at", "2019-04-08 16:24:35.910516"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #11"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.6ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #11"], ["age", 3], ["cuteness", 8], ["softness", 4], ["created_at", "2019-04-08 16:24:35.919067"], ["updated_at", "2019-04-08 16:24:35.919067"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #12"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #12"], ["age", 11], ["cuteness", 4], ["softness", 5], ["created_at", "2019-04-08 16:24:35.925290"], ["updated_at", "2019-04-08 16:24:35.925290"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #13"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #13"], ["age", 16], ["cuteness", 1], ["softness", 7], ["created_at", "2019-04-08 16:24:35.931458"], ["updated_at", "2019-04-08 16:24:35.931458"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #14"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.7ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #14"], ["age", 13], ["cuteness", 3], ["softness", 7], ["created_at", "2019-04-08 16:24:35.938662"], ["updated_at", "2019-04-08 16:24:35.938662"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #15"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.7ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #15"], ["age", 0], ["cuteness", 1], ["softness", 5], ["created_at", "2019-04-08 16:24:37.915390"], ["updated_at", "2019-04-08 16:24:37.915390"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #16"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (3.9ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #16"], ["age", 15], ["cuteness", 5], ["softness", 4], ["created_at", "2019-04-08 16:24:37.921878"], ["updated_at", "2019-04-08 16:24:37.921878"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #17"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (1.0ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #17"], ["age", 6], ["cuteness", 3], ["softness", 7], ["created_at", "2019-04-08 16:24:37.931527"], ["updated_at", "2019-04-08 16:24:37.931527"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #18"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (1.0ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #18"], ["age", 7], ["cuteness", 5], ["softness", 4], ["created_at", "2019-04-08 16:24:37.939203"], ["updated_at", "2019-04-08 16:24:37.939203"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #19"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.9ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #19"], ["age", 12], ["cuteness", 8], ["softness", 5], ["created_at", "2019-04-08 16:24:37.946394"], ["updated_at", "2019-04-08 16:24:37.946394"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #20"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.9ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #20"], ["age", 0], ["cuteness", 7], ["softness", 7], ["created_at", "2019-04-08 16:24:39.681725"], ["updated_at", "2019-04-08 16:24:39.681725"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #21"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #21"], ["age", 9], ["cuteness", 9], ["softness", 2], ["created_at", "2019-04-08 16:24:39.689234"], ["updated_at", "2019-04-08 16:24:39.689234"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #22"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.6ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #22"], ["age", 2], ["cuteness", 8], ["softness", 6], ["created_at", "2019-04-08 16:24:39.695853"], ["updated_at", "2019-04-08 16:24:39.695853"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #23"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (0.8ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #23"], ["age", 11], ["cuteness", 4], ["softness", 9], ["created_at", "2019-04-08 16:24:39.702064"], ["updated_at", "2019-04-08 16:24:39.702064"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "kittens"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "kittens" WHERE "kittens"."name" = ? LIMIT ?[0m  [["name", "Filler Kitten #24"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Create (1.3ms)[0m  [1m[32mINSERT INTO "kittens" ("name", "age", "cuteness", "softness", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Filler Kitten #24"], ["age", 1], ["cuteness", 9], ["softness", 6], ["created_at", "2019-04-08 16:24:39.709083"], ["updated_at", "2019-04-08 16:24:39.709083"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mKitten Load (0.5ms)[0m  [1m[34mSELECT "kittens".* FROM "kittens"[0m

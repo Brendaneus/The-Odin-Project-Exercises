@@ -1,0 +1,7 @@
+<h1>Edit <%= @kitten.name %></h1>
+
+<%= render 'errors' %>
+
+<%= link_to "Delete this Kitten", kitten_path(@kitten), method: :delete %>
+
+<%= render 'form' %>
