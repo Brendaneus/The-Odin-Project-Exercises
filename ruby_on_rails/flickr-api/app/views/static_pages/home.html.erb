@@ -1,0 +1,15 @@
+<h1>Search<%= @person ? "ing for #{@person.username.possessive}" : "" %> Photos on Flickr</h1>
+
+<%= form_tag '/', method: :get do %>
+	<%= label_tag :search_id, "Search By Id" %>
+	<%= text_field_tag :search_id %>
+
+	<%= submit_tag "Get Photos" %>
+<% end %>
+
+<% if @photos %>
+	<hr>
+	<% @photos.each do |photo| %>
+		<%= link_to( image_tag(photo.source_url), photo.url ) %>
+	<% end %>
+<% end %>
