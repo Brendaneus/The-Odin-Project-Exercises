@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Tic-Tac-Toe</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+	<main>
+		<section class="scoreDisplay">
+			<div id="playerOne">
+				<!-- <h2 class="mark">X</h2> -->
+				<div class="details">
+					<input class="name" value="Player One">
+					<p>Score: <span class="score">0</span></p>
+					<button class="reset">Reset</button>
+				</div>
+			</div>
+			<div id="playerTwo">
+				<!-- <h2 class="mark">O</h2> -->
+				<div class="details">
+					<input class="name" value="Player Two">
+					<p>Score: <span class="score">0</span></p>
+					<button class="reset">Reset</button>
+				</div>
+			</div>
+			<h1 id="message">
+				Welcome!
+			</h1>
+		</section>
+		
+		<section class="gameboard">
+			<div id="top-left">1</div>
+			<div id="top-center">2</div>
+			<div id="top-right">3</div>
+			<div id="mid-left">4</div>
+			<div id="mid-center">5</div>
+			<div id="mid-right">6</div>
+			<div id="bot-left">7</div>
+			<div id="bot-center">8</div>
+			<div id="bot-right">9</div>
+		</section>
+
+		<button id="clear">Clear Board</button>
+	</main>
+	<h1 class="resize">RESIZE ME</h1>
+</body>
+</html>
