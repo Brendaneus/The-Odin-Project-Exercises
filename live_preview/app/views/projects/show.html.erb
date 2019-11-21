@@ -1,0 +1,7 @@
+<%= tag.h1 @project.name %>
+
+<hr>
+
+<% if @project.notes.present? %>
+	<%= tag.p @project.notes %>
+<% end %>

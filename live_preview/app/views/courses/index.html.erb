@@ -1,0 +1,11 @@
+<%= tag.h1 "Browse Courses:" %>
+
+<hr>
+
+<% if @courses.empty? %>
+	<%= tag.h2 "No courses have been listed" %>
+<% else %>
+	<% @courses.each do |course| %>
+		<h2><%= link_to course.name, course_path(course) %></h2>
+	<% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CourseTest" filepath="/home/overseer/Git/the_odin_project/live_preview/test/models/course_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="0.022751923999749124">
+    <testcase name="test_requires_name" lineno="4" classname="CourseTest" assertions="1" time="0.022751923999749124">
+    </testcase>
+  </testsuite>
+</testsuites>
