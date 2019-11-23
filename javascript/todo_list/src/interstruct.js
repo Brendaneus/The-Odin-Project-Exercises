@@ -712,14 +712,15 @@ class Interstruct {
 		// Create formatted list of Projects and their Todo lists
 		var formattedList = {};
 		for (let projectName in Interstruct.list) {
+			let struct = Interstruct.list[projectName];
+
 			formattedList[projectName] = {};
-			formattedList[projectName].finished = Interstruct.list[projectName].display.finished();
+			formattedList[projectName].sortStates = struct.sortStates;
+			formattedList[projectName].finished = struct.display.finished();
 			formattedList[projectName].todoList = [];
 
-			let project = Interstruct.list[projectName].project;
-
-			for (let index in project.todoList) {
-				formattedList[projectName].todoList.push(project.todoList[index]);
+			for (let index in struct.project.todoList) {
+				formattedList[projectName].todoList.push(struct.project.todoList[index]);
 			}
 		}
 
@@ -736,12 +737,14 @@ class Interstruct {
 		// Load sorting states from localStorage and apply
 		Interstruct.sortStates = JSON.parse(window.localStorage.getItem('sort_states'));
 
-		// Load project list from localStorage
+		// Load formatted struct list from localStorage
 		var formattedList = JSON.parse(window.localStorage.getItem('project_list'));
 
-		// Re-create formatted list
+		// Re-create each struct in formatted list
 		for (let projectName in formattedList) {
 			let struct = new Interstruct(projectName);
+
+			struct.sortStates = formattedList[projectName].sortStates;
 
 			if (formattedList[projectName].finished) {
 				struct.display.finish();
@@ -757,9 +760,12 @@ class Interstruct {
 					struct.check(todoData._title);
 				}
 			}
+
+			struct.applySort();
 		}
 
 		Interstruct.applySort();
+		Interstruct.saveData();
 
 		if (Object.keys(Interstruct.list).length > 0) {
 			Display.updateMessage("Welcome back!");
@@ -850,6 +856,8 @@ function sortByDueDate(first, second, sortStates) {
 
 Interstruct.list = {};
 Interstruct.sortStates = {};
+Interstruct.saving = false;
+Interstruct.loading = false;
 
 // >>> DELETE THIS <<<
 Interstruct.todoError = new Error("TODO: Interstruct Module");
