@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_110537) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.string "tutorial"
+    t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -21,8 +23,11 @@ ActiveRecord::Schema.define(version: 2019_11_21_110537) do
   create_table "projects", force: :cascade do |t|
     t.integer "course_id"
     t.string "name"
-    t.string "url"
     t.text "notes"
+    t.string "tutorial"
+    t.string "url"
+    t.string "source"
+    t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_projects_on_course_id"

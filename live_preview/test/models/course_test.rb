@@ -11,7 +11,7 @@ class CourseTest < ActiveSupport::TestCase
 	end
 
 	test "has_many projects" do
-		@project = @course.projects.create(name: "Sample Project")
+		@project = @course.projects.create!(name: "Sample Project")
 		assert @course.projects.include?(@project)
 	end
 
@@ -32,6 +32,16 @@ class CourseTest < ActiveSupport::TestCase
 		assert @course.valid?
 		@course.name = "X" * 51
 		assert_not @course.valid?
+	end
+
+	test "visible defaults as true" do
+		assert @course.visible? == true 
+	end
+
+	test "should scope visible courses" do
+		@invisible_course = Course.create!(name: "Invisible Course", visible: false)
+		assert Course.visible.include? @course
+		assert_not Course.visible.include? @invisible_course
 	end
 
 end

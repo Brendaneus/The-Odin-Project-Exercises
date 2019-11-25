@@ -34,4 +34,14 @@ class ProjectTest < ActiveSupport::TestCase
 		assert_not @project.valid?
 	end
 
+	test "visible defaults as true" do
+		assert @project.visible? == true 
+	end
+
+	test "should scope visible courses" do
+		@invisible_project = @course.projects.create!(name: "Invisible Project", visible: false)
+		assert Project.visible.include? @project
+		assert_not Project.visible.include? @invisible_project
+	end
+
 end

@@ -1,40 +1,39 @@
-let myLibrary = [];
-let localStorage = window.localStorage;
+// Book class
+class Book {
+	constructor(title = "Unlisted", author = "Unknown", pages = "Undefined", status) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.status = status;
+		Book.library.push(this);
+	}
+}
+Book.library = []; // Static variable, as clean as it gets
 
-// Starting library data
+let localStorage = window.localStorage; // Saved library data
+
+// THIS SHOULD BE THE ONLY GLOBAL SCOPE CODE 
+// Reload saved library data, or create new library
 if (localStorage.getItem("myLibrary")) {
 	loadData();
 } else {
 	clearData();
 
-	let myBook = new Book("The Holy Bibble", "St. Jesus", 1234, "Unpalettable");
+	let myBook = new Book("Ender's Game", "Orson Scott Card", 324, "Read");
 	let anotherBook = new Book("Childhoods End", "Arthur C Clarke", 214, "Read");
-	let theBook = new Book("The Pickaxe", "Dave Thomas, Andy Hunt, Chad Fowler", 829, "Uh...");
+	let theBook = new Book("The Pickaxe", "Dave Thomas, Andy Hunt, Chad Fowler", 829, "TODO");
 	let theGoodBook = new Book("The C Programming Language", "Brian W Kernighan, Dennis M Ritchie", 272, "Shelved");
+	let aNewBook = new Book("Practical Electronics for Inventors", "Paul Scherz, Simon Monk", 1056, "Standing By");
 	let everybodyWantsBooks = new Book("Nintendo Power", "Reggie Miyamoto", 20, "Unread");
-
-	myLibrary.push(myBook, anotherBook, theBook, theGoodBook, everybodyWantsBooks);
 }
 
-
-// Book constructor
-function Book(title = "Unlisted", author = "Unknown", pages = "Undefined", status) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.status = status;
-}
-
-function addBookToLibrary(book) {
-	myLibrary.push(book);
-}
-
-// Add myLibrary and form to html window
+// MOVE: DISPLAY
+// Render library and new Book form to html window
 function render() {
 	let libraryTable = document.createElement("table");
 	libraryTable.setAttribute("id", "libraryTable");
 
-	// Create headers for columns
+	// Create Header for columns
 	let tableHeader = document.createElement("tr");
 	
 	// Title
@@ -57,15 +56,17 @@ function render() {
 	statusHeader.innerHTML = "Status";
 	tableHeader.appendChild(statusHeader);
 
+	// Add Header to Library Table
 	libraryTable.appendChild(tableHeader);
 
-	// Iterate through books in library
-	for(let i = 0; i < myLibrary.length; i++) {
+	// Add Book Listing to Library Table for each Book
+	for(let i = 0; i < Book.library.length; i++) {
 		let bookListing = document.createElement("tr");
 
-		for (property in myLibrary[i]) {
+		// Add a column for each property on Book Listing
+		for (property in Book.library[i]) {
 			let dataEntry = document.createElement("td");
-			dataEntry.innerHTML = myLibrary[i][property];
+			dataEntry.innerHTML = Book.library[i][property];
 			bookListing.appendChild(dataEntry);
 		}
 
@@ -81,34 +82,33 @@ function render() {
 		removeButton.addEventListener("click", removeBook);
 		bookListing.appendChild(removeButton);
 
+		// Add Book Listing to Library Table
 		libraryTable.appendChild(bookListing);
 	}
 
+	// Add Library Table to DOM
 	document.body.appendChild(libraryTable);
 
 
-	// Create a "NEW BOOK" button
+	// Create a "NEW BOOK" button and add to DOM
 	let newBookButton = document.createElement("button");
 	newBookButton.innerHTML = "ADD BOOK";
 	document.body.appendChild(newBookButton);
 	newBookButton.addEventListener("click", toggleBookForm);
 
-
-	// Create a "SAVE DATA" button
+	// Create a "SAVE DATA" button and add to DOM
 	let saveButton = document.createElement("button");
 	saveButton.innerHTML = "SAVE DATA";
 	document.body.appendChild(saveButton);
 	saveButton.addEventListener("click", saveData);
 
-
-	// Create a "CLEAR DATA" button
+	// Create a "CLEAR DATA" button and add to DOM
 	let clearButton = document.createElement("button");
 	clearButton.innerHTML = "CLEAR DATA";
 	document.body.appendChild(clearButton);
 	clearButton.addEventListener("click", clearData);
 
-
-	// Create form for new book
+	// Create Form for new Book Listings
 	let newBookForm = document.createElement("form");
 	newBookForm.setAttribute("id", "newBookForm");
 	newBookForm.style.display = "none";
@@ -155,9 +155,11 @@ function render() {
 	newBookForm.addEventListener("submit", submitBookToTable);
 	newBookForm.appendChild(newBookSubmit);
 
+	// Add Book Form to DOM
 	document.body.appendChild(newBookForm);
 }
 
+// MOVE: DISPLAY >>>>>>> CLEAN THIS MESS
 // Get book index
 function getIndexOf(bookListing) {
 	let index = -1;
@@ -165,30 +167,33 @@ function getIndexOf(bookListing) {
 	return index;
 }
 
+// MOVE: DISPLAY & LIBRARY
 function toggleBookStatus(e) {
 	let status = e.target.parentElement.children[3];
 	let index = getIndexOf(e.target.parentElement);
 	if (status.innerHTML !== "Read") {
 		status.innerHTML = "Read";
-		myLibrary[index].status = "Read";
+		Book.library[index].status = "Read";
 	} else {
 		status.innerHTML = "Unread";
-		myLibrary[index].status = "Unread";
+		Book.library[index].status = "Unread";
 	}
 }
 
+// MOVE: DISPLAY & LIBRARY
 // Remove book listing from Library array and table
 function removeBook(e) {
 	let element = e.target.parentElement;
 
 	// remove array element
 	let index = getIndexOf(element);
-	myLibrary.splice(index,1);
+	Book.library.splice(index,1);
 
 	//remove DOM element
 	e.target.parentElement.remove();
 }
 
+// MOVE: DISPLAY & LIBRARY
 // Add a book listing to library table
 function submitBookToTable(e) {
 	// Prevent Page Reload
@@ -233,18 +238,17 @@ function submitBookToTable(e) {
 	bookListing.appendChild(removeButton);
 
 	// Add listing to Library array
-	let book = new Book(bookTitleText, bookAuthorText, bookPagesText, bookStatusText);
-	myLibrary.push(book);
+	new Book(bookTitleText, bookAuthorText, bookPagesText, bookStatusText);
 
 	// Add Listing to Table
 	let libraryTable = document.querySelector("#libraryTable")
 	libraryTable.appendChild(bookListing);
 
-
 	// Clear form for new entry
 	e.target.reset();
 }
 
+// MOVE: DISPLAY
 // Open / Close Form for new books
 function toggleBookForm(e) {
 	let newBookForm = document.getElementById("newBookForm");
@@ -258,16 +262,21 @@ function toggleBookForm(e) {
 	}
 }
 
+// MOVE: STORAGE
 function saveData() {
-	localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+	localStorage.setItem("myLibrary", JSON.stringify(Book.library));
 	console.log(localStorage.getItem("myLibrary"));
 }
 
+// MOVE: STORAGE
 function loadData() {
-	myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+	Book.library = JSON.parse(localStorage.getItem("myLibrary"));
 }
 
+// MOVE: STORAGE
+// Remove all Books from Library and delete local save
 function clearData() {
+	// Book.library = [];
 	localStorage.removeItem("myLibrary");
 }
 
@@ -275,6 +284,8 @@ render();
 
 
 /* TODO:
+ * REFACTOR INTO DISPLAY MODULE/CLASS, STORAGE MODULE, AND LIBRARY CLASS
+ *
  * Change all methods to use render to make changes (re-render) and change render to delete last render
  * Associate all Listings with their objects and refactor
  * Refactor book listing / elemetn creation into helper method(s) that take(s) text and return complete DOM element
