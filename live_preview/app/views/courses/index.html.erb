@@ -1,11 +1,17 @@
-<%= tag.h1 "Browse Courses:" %>
+<main>
 
-<hr>
+	<header>
+		<%= tag.h1 "Browse Courses:", class: 'title' %>
+	</header>
 
-<% if @courses.empty? %>
-	<%= tag.h2 "No courses have been listed" %>
-<% else %>
-	<% @courses.each do |course| %>
-		<h2><%= link_to course.name, course_path(course) %></h2>
-	<% end %>
-<% end %>
+	<section class='list'>
+		<% if @courses.empty? %>
+			<%= tag.p "No courses have been listed.", class: 'notice' %>
+		<% else %>
+			<% @courses.each do |course| %>
+				<%= link_to course.name, course_path(course.slug), class: "#{ (course.complete?) ? "complete" : "incomplete" } course" %>
+			<% end %>
+		<% end %>
+	</section>
+
+</main>

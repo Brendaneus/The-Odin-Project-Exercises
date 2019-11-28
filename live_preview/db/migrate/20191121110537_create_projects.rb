@@ -6,12 +6,16 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.text :notes
 
       t.string :tutorial
-      t.string :url
       t.string :source
+      t.string :url
 
+      t.boolean :complete, default: true
       t.boolean :visible, default: true
 
       t.timestamps
+
+      t.string :slug
+      t.index :slug, unique: true
     end
   end
 end

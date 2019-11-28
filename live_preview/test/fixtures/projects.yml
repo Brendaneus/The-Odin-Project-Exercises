@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one_one:
   course: one
-  name: MyString
-  notes: MyText
+  slug: "project-one"
+  name: "Project One"
 
-two:
+one_two:
+  course: one
+  slug: "project-two"
+  name: "Project Two"
+
+two_one:
   course: two
-  name: MyString
-  notes: MyText
+  slug: "another-project-one"
+  name: "Another Project One"
+
+two_two:
+  course: two
+  slug: "another-project-two"
+  name: "Another Project Two"

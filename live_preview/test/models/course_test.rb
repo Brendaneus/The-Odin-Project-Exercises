@@ -3,7 +3,7 @@ require 'test_helper'
 class CourseTest < ActiveSupport::TestCase
 	
 	def setup
-		@course = Course.create(name: "Sample Course")
+		@course = courses(:one)
 	end
 
 	test "sample data is valid" do
@@ -35,7 +35,19 @@ class CourseTest < ActiveSupport::TestCase
 	end
 
 	test "visible defaults as true" do
-		assert @course.visible? == true 
+		assert @course.visible? == true
+	end
+
+	test "should check if all projects are completed" do
+		@course.projects.create!(name: "Complete Project", complete: true)
+		assert @course.complete?
+
+		@course.projects.create!(name: "Incomplete Project", complete: false)
+		assert_not @course.complete?
+
+		# Return false if course empty
+		@new_course = Course.create!(name: "New Project")
+		assert @new_course.complete? == false
 	end
 
 	test "should scope visible courses" do

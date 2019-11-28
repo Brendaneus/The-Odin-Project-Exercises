@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.7'
+ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 6.0.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -55,8 +55,10 @@ group :development do
 end
 
 group :production do
-  #Adds support for PostGresSQL used by Heroku
+  # Adds support for PostGresSQL used by Heroku
   gem 'pg'
+  # Adds support for AWS S3 access
+  gem 'aws-sdk-s3'
 end
 
 group :test do

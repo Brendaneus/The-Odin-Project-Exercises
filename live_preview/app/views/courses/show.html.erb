@@ -1,13 +1,25 @@
-<%= tag.h1 @course.name %>
+<main>
 
-<hr>
+	<header>
+		<h1 class='title'>
+			<%= link_to "Courses", courses_path %>: <%= @course.name %>
+		</h1>
+		
+		<div class='links'>
+			<%= link_to "Source", @course.source, target: '_blank', class: 'source' if @course.source.present? %>
+			
+			<%= link_to "Tutorial", @course.tutorial, target: '_blank', class: 'tutorial' if @course.tutorial.present? %>
+		</div>
+	</header>
 
-<%= tag.h2 "Projects:" %>
+	<section class='list'>
+		<% if @projects.empty? %>
+			<%= tag.p "No projects have been listed for this course", class: 'notice' %>
+		<% else %>
+			<% @projects.each do |project| %>
+				<%= link_to project.name, course_project_path(@course.slug, project.slug), class: "#{ (project.complete?) ? "complete" : "incomplete" } project" %>
+			<% end %>
+		<% end %>
+	</section>
 
-<% if @projects.empty? %>
-	<%= tag.h3 "No projects have been listed for this course" %>
-<% else %>
-	<% @projects.each do |project| %>
-		<h3><%= link_to project.name, course_project_path(@course, project) %></h3>
-	<% end %>
-<% end %>
+</main>

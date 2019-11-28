@@ -1,19 +1,29 @@
-<%= tag.h1 @project.name %>
+<main>
 
-<hr>
+	<header>
+		<h1 class='title'>
+			<%= link_to @course.name, course_path(@course.slug) %>: <%= @project.name %>
+		</h1>
 
-<% if @project.url.present? %>
-	<%= content_tag :iframe, '', src: @project.url, width: "100%", height: 600 %>
-<% else %>
-	<%= tag.p "This project has not been uploaded yet." %>
-<% end %>
+		<div class='links'>
+			<%= link_to "Source", @project.source, target: '_blank', class: 'source' if @project.source.present? %>
+			
+			<%= link_to "Tutorial", @project.tutorial, target: '_blank', class: 'tutorial' if @project.tutorial.present? %>
+		</div>
+	</header>
 
-<% if @project.source.present? %>
-	<%= link_to "Source", @project.source %>
-<% else %>
-	<%= tag.p "Source code unavailable." %>
-<% end %>
+	<article class='live_preview'>
+		<% if @project.url.present? %>
+			<%= content_tag :iframe, '', src: @project.url, frameborder: 0 %>
+		<% else %>
+			<%= tag.p "This project does not have a live preview yet.", class: 'notice' %>
+		<% end %>
+	</article>
 
-<% if @project.notes.present? %>
-	<%= tag.p @project.notes %>
-<% end %>
+	<section class='description'>
+		<% if @project.notes.present? %>
+			<%= tag.p @project.notes, class: 'notes' %>
+		<% end %>
+	</section>
+
+</main>

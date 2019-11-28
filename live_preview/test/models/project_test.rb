@@ -3,8 +3,8 @@ require 'test_helper'
 class ProjectTest < ActiveSupport::TestCase
 
 	def setup
-		@course = Course.create(name: "Sample Course")
-		@project = @course.projects.create(name: "Sample Project")
+		@course = courses(:one)
+		@project = projects(:one_one)
 	end
 
 	test "sample data is valid" do
@@ -32,6 +32,10 @@ class ProjectTest < ActiveSupport::TestCase
 		assert @project.valid?
 		@project.name = "X" * 51
 		assert_not @project.valid?
+	end
+
+	test "complete defaults as true" do
+		assert @project.complete? == true
 	end
 
 	test "visible defaults as true" do

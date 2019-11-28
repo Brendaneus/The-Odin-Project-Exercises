@@ -1,0 +1,182 @@
+* {
+	padding: 0;
+	margin: 0;
+	// border: thin solid black;
+	// box-sizing: border-box;
+}
+
+html, body { 
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
+	font-size: 10px;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+
+		color: white;
+		background: black;
+		border-bottom: 2px solid black;
+
+		h1.title {
+			flex: 0 1 auto;
+			margin: 10px;
+
+			font-size: 3rem;
+
+			a {
+				padding: 5px;
+				
+				&:hover {
+					color: black;
+					// text-shadow:
+					// 	-1px -1px 5px white,
+					// 	1px -1px 5px white,
+					// 	-1px 1px 5px white,
+					// 	1px 1px 5px white;
+					background: white;
+				}
+
+				&:visited {
+					color: white;
+
+					&:hover {
+						color: black;
+					}
+				}
+			}
+		}
+
+		div.links {
+			height: 100%;
+			flex: 0 0 auto;
+
+			display: flex;
+			align-items: stretch;
+			
+			a {
+				padding: 10px;
+				margin: 5px;
+
+				font-size: 2rem;
+
+				&:hover {
+					color: black;
+					background: white;
+				}
+
+				&:visited {
+					color: white;
+
+					&:hover {
+						color: black;
+					}
+				}
+			}
+		}
+	}
+
+	article.live_preview {
+		width: 100%;
+		flex: 1 0 auto;
+
+		display: flex;
+
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		.notice {
+			width: 100%;
+			max-width: 600px;
+			padding: 20px 40px;
+			margin: auto;
+
+			border: thin solid black;
+			text-align: center;
+			font-size: 2rem;
+		}
+	}
+
+	section.description {
+		width: 100%;
+		
+		display: flex;
+		flex-direction: column;
+
+		border-top: 2px solid black;
+
+		p.notes {
+			padding: 5px;
+
+			font-size: 1.6rem;
+		}
+	}
+
+	section.list {
+		flex: 1 0 auto;
+
+		a {
+			display: block;
+			padding: 10px 20px;
+			margin: 5px;
+
+			font-size: 2rem;
+			text-decoration: none;
+			color: black;
+
+			&:hover {
+				color: white;
+				background: black;
+			}
+
+			&:visited {
+				color: black;
+
+				&:hover {
+					color: white;
+				}
+			}
+
+			&.complete {
+				border: thick solid green;
+			}
+
+			&.incomplete {
+				&.course {
+					border: thick solid #55F;
+				}
+
+				&.project {
+					border: thick solid orange;
+				}
+			}
+		}
+
+		p.notice {
+			width: 100%;
+			max-width: 600px;
+			padding: 20px 40px;
+			margin: 20px auto 0;
+
+			border: thin solid black;
+			text-align: center;
+			font-size: 2rem;
+		}
+	}
+}

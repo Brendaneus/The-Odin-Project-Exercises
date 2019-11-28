@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
 	after_action :separate_logs
 
 	def show
-		@course = Course.find(params[:course_id])
-		@project = @course.projects.find(params[:id])
+		@course = Course.find_by_slug(params[:course_slug])
+		@project = @course.projects.find_by_slug(params[:slug])
 	end
 
 end
