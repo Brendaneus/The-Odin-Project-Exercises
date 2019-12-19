@@ -1,0 +1,113 @@
+html, body { /* csslint allow: order-alphabetical */
+	font-size: 10px;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+main { /* csslint allow: order-alphabetical */
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;	
+	width: 100%;
+}
+
+header { /* csslint allow: order-alphabetical */
+	background: skyblue;
+	padding: 20px 10px;
+	margin: 10px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+h1 { /* csslint allow: order-alphabetical */
+	display: inline-block;
+	background: white;
+	padding: 20px 80px;
+	border-radius: 10px;
+}
+
+table { /* csslint allow: order-alphabetical */
+	background: #DDD;
+	border-collapse: collapse;
+	border-radius: 5px;
+	margin: 10px;
+}
+
+table td, table th { /* csslint allow: order-alphabetical */
+	border: thin solid black;
+}
+
+thead th div { /* csslint allow: order-alphabetical */
+	display: flex;
+	border: thin solid black;
+}
+
+th div input { /* csslint allow: order-alphabetical */
+	flex: 1 1 auto;
+}
+
+th div button { /* csslint allow: order-alphabetical */
+	width: 80px;
+	flex: 0 1 auto;
+}
+
+th input { /* csslint allow: order-alphabetical */
+	min-width: 0;
+}
+
+th button, td button { /* csslint allow: order-alphabetical */
+	width: 100%;
+}
+
+button.ascending:before {
+	content: '\25B4';
+}
+
+button.descending:before {
+	content: '\25BE';
+}
+
+td input { /* csslint allow: order-alphabetical */
+	width: 100%;
+	box-sizing: border-box;
+}
+
+table input, table button { /* csslint allow: order-alphabetical */
+	padding: 2px;
+	margin: auto;
+	border-radius: 0;
+}
+
+footer { /* csslint allow: order-alphabetical */
+	display: flex;
+	background: peachpuff;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+footer button { /* csslint allow: order-alphabetical */
+	font-size: 2rem;
+	height: 40px;
+	margin: 10px;
+	border: thin solid black;
+	border-radius: 5px;
+	flex: 0 1 auto;
+}
+
+footer button:hover { /* csslint allow: order-alphabetical */
+	background: orange;
+	box-shadow: 5px 5px 5px white, -5px 5px 5px white, -5px -5px 5px white, 5px -5px 5px white;
+}
+
+footer div { /* csslint allow: order-alphabetical */
+	display: flex;
+	align-items: center;
+	font-size: 1.8rem;
+	background: white;
+	height: 40px;
+	margin: 10px;
+	border: thin solid white;
+	border-radius: 5px;
+	flex: 1 1 auto;
+}
