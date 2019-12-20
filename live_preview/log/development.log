@@ -1,0 +1,570 @@
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20191121110109)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "source" varchar, "tutorial" varchar, "visible" boolean DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "slug" varchar)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courses_on_slug" ON "courses" ("slug")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191121110109"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjects (20191121110537)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "name" varchar, "notes" text, "tutorial" varchar, "source" varchar, "url" varchar, "complete" boolean DEFAULT 1, "visible" boolean DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "slug" varchar, CONSTRAINT "fk_rails_589498d3ea"
+FOREIGN KEY ("course_id")
+  REFERENCES "courses" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_projects_on_course_id" ON "projects" ("course_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_projects_on_slug" ON "projects" ("slug")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191121110537"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-20 01:04:20.962823"], ["updated_at", "2019-12-20 01:04:20.962823"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Web Development 101"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("name", "source", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Web Development 101"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/web_development_101"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101"], ["created_at", "2019-12-20 01:04:26.527942"], ["updated_at", "2019-12-20 01:04:26.527942"], ["slug", "web-development-101"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Google Mockup"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Google Mockup"], ["notes", "Created using visual reference only (good luck trying to navigate Google's mess of divs)."], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/html-css"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/web_development_101/google-homepage"], ["url", "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/web_development_101/google-homepage/index.html"], ["created_at", "2019-12-20 01:04:26.571884"], ["updated_at", "2019-12-20 01:04:26.571884"], ["slug", "google-mockup"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Rock Paper Scissors"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Rock Paper Scissors"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.584533"], ["updated_at", "2019-12-20 01:04:26.584533"], ["slug", "rock-paper-scissors"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Etch-a-Sketch"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Etch-a-Sketch"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/etch-a-sketch-project"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.608813"], ["updated_at", "2019-12-20 01:04:26.608813"], ["slug", "etch-a-sketch"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Calculator"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Calculator"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/calculator"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.627158"], ["updated_at", "2019-12-20 01:04:26.627158"], ["slug", "calculator"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Learn Ruby"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Learn Ruby"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/ruby"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/web_development_101/learn_ruby"], ["url", ""], ["complete", 0], ["created_at", "2019-12-20 01:04:26.648890"], ["updated_at", "2019-12-20 01:04:26.648890"], ["slug", "learn-ruby"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Blogger"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.8ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Blogger"], ["notes", "Currently, this app does not support image uploads in production, and is awaiting a fix."], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/ruby-on-rails"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/web_development_101/blogger"], ["url", "https://odin-blogger-live.herokuapp.com/"], ["complete", 0], ["created_at", "2019-12-20 01:04:26.672074"], ["updated_at", "2019-12-20 01:04:26.672074"], ["slug", "blogger"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Pomodoro"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["name", "Pomodoro"], ["tutorial", "https://www.theodinproject.com/courses/web-development-101/lessons/pairing-project"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.682108"], ["updated_at", "2019-12-20 01:04:26.682108"], ["slug", "pomodoro"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Ruby Programming"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("name", "source", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Programming"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming"], ["created_at", "2019-12-20 01:04:26.689266"], ["updated_at", "2019-12-20 01:04:26.689266"], ["slug", "ruby-programming"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Caesar Cipher (Ruby)"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Caesar Cipher (Ruby)"], ["notes", "Relies on Rspec; awaiting implementation."], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/building-blocks#project-1-caesar-cipher"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_programming/caesar_cipher"], ["url", ""], ["complete", 0], ["created_at", "2019-12-20 01:04:26.701026"], ["updated_at", "2019-12-20 01:04:26.701026"], ["slug", "caesar-cipher"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Stock Picker"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Stock Picker"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/building-blocks#project-2-stock-picker"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/stock_picker.rb"], ["url", "https://repl.it/@Brendaneus/Stock-Picker?lite=true"], ["created_at", "2019-12-20 01:04:26.709881"], ["updated_at", "2019-12-20 01:04:26.709881"], ["slug", "stock-picker"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Substrings"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Substrings"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/building-blocks#project-3-substrings"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/substrings.rb"], ["url", "https://repl.it/@Brendaneus/Substrings?lite=true"], ["created_at", "2019-12-20 01:04:26.718112"], ["updated_at", "2019-12-20 01:04:26.718112"], ["slug", "substrings"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Bubble Sort"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Bubble Sort"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks#project-1-bubble-sort"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/bubble_sort.rb"], ["url", "https://repl.it/@Brendaneus/Bubble-Sort?lite=true"], ["created_at", "2019-12-20 01:04:26.725309"], ["updated_at", "2019-12-20 01:04:26.725309"], ["slug", "bubble-sort"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Enumerable Methods"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Enumerable Methods"], ["notes", "Relies on Rspec; awaiting implementation."], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks#project-2-enumerable-methods"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_programming/enumerable_methods"], ["url", ""], ["complete", 0], ["created_at", "2019-12-20 01:04:26.732332"], ["updated_at", "2019-12-20 01:04:26.732332"], ["slug", "enumerable-methods"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Tic Tac Toe (Ruby Version)"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Tic Tac Toe (Ruby Version)"], ["notes", "Seems to have some matching bugs; awaiting fix."], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/oop#project-1-tic-tac-toe"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/tic_tac_toe.rb"], ["url", "https://repl.it/@Brendaneus/Tic-Tac-Toe?lite=true"], ["complete", 0], ["created_at", "2019-12-20 01:04:26.740310"], ["updated_at", "2019-12-20 01:04:26.740310"], ["slug", "tic-tac-toe-(ruby)"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Mastermind"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Mastermind"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/oop#project-2-mastermind"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/mastermind.rb"], ["url", "https://repl.it/@Brendaneus/Mastermind?lite=true"], ["created_at", "2019-12-20 01:04:26.748274"], ["updated_at", "2019-12-20 01:04:26.748274"], ["slug", "mastermind"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Event Manager"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Event Manager"], ["notes", "Relies on Rspec; awaiting implementation."], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/event-manager"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_programming/event_manager"], ["url", ""], ["complete", 0], ["created_at", "2019-12-20 01:04:26.756766"], ["updated_at", "2019-12-20 01:04:26.756766"], ["slug", "event-manager"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Hangman"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Hangman"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/file-i-o-and-serialization"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_programming/hangman"], ["url", "https://repl.it/@Brendaneus/Hangman?lite=true"], ["created_at", "2019-12-20 01:04:26.764116"], ["updated_at", "2019-12-20 01:04:26.764116"], ["slug", "hangman"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Fibonacci"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Fibonacci"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/recursion#warmup-fibonacci"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/fibonacci.rb"], ["url", "https://repl.it/@Brendaneus/Fibonacci?lite=true"], ["created_at", "2019-12-20 01:04:26.771745"], ["updated_at", "2019-12-20 01:04:26.771745"], ["slug", "fibonacci"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Merge Sort"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Merge Sort"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/recursion#project-merge-sort"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/merge_sort.rb"], ["url", "https://repl.it/@Brendaneus/Merge-Sort?lite=true"], ["created_at", "2019-12-20 01:04:26.781409"], ["updated_at", "2019-12-20 01:04:26.781409"], ["slug", "merge-sort"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Linked Lists"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Linked Lists"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/linked-lists"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/linked_list.rb"], ["url", "https://repl.it/@Brendaneus/Linked-Lists?lite=true"], ["created_at", "2019-12-20 01:04:26.789355"], ["updated_at", "2019-12-20 01:04:26.789355"], ["slug", "linked-lists"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Binary Search"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Binary Search"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/data-structures-and-algorithms#project-1-binary-search-trees"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.796441"], ["updated_at", "2019-12-20 01:04:26.796441"], ["slug", "binary-search"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Knights Travails"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Knights Travails"], ["notes", "Very slow, could use a check for visited spaces."], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/data-structures-and-algorithms#project-2-knights-travails"], ["source", "https://github.com/Brendaneus/the_odin_project/blob/master/ruby_programming/knights_travails.rb"], ["url", "https://repl.it/@Brendaneus/Knights-Travails?lite=true"], ["created_at", "2019-12-20 01:04:26.803757"], ["updated_at", "2019-12-20 01:04:26.803757"], ["slug", "knights-travails"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Time Traveling"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Time Traveling"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/testing-your-ruby-code#warmup-time-traveling"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.811959"], ["updated_at", "2019-12-20 01:04:26.811959"], ["slug", "time-traveling"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Connect Four"], ["LIMIT", 1]]
+  [1m[36mProject Create (1.0ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Connect Four"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/testing-your-ruby-code#project-tdd-connect-four"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.821137"], ["updated_at", "2019-12-20 01:04:26.821137"], ["slug", "connect-four"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Chess"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 2], ["name", "Chess"], ["tutorial", "https://www.theodinproject.com/courses/ruby-programming/lessons/ruby-final-project"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.835799"], ["updated_at", "2019-12-20 01:04:26.835799"], ["slug", "chess"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Databases"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("name", "tutorial", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Databases"], ["tutorial", "https://www.theodinproject.com/courses/databases"], ["visible", 0], ["created_at", "2019-12-20 01:04:26.845755"], ["updated_at", "2019-12-20 01:04:26.845755"], ["slug", "databases"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Ruby on Rails"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("name", "source", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby on Rails"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails"], ["created_at", "2019-12-20 01:04:26.864367"], ["updated_at", "2019-12-20 01:04:26.864367"], ["slug", "ruby-on-rails"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Caesar Cipher Reloaded"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Caesar Cipher Reloaded"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/sinatra-project#project-1-caesar-cipher-reloaded"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.872733"], ["updated_at", "2019-12-20 01:04:26.872733"], ["slug", "caesar-cipher-reloaded"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Another Web-Game"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Another Web-Game"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/sinatra-project#project-2-another-web-game"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.881512"], ["updated_at", "2019-12-20 01:04:26.881512"], ["slug", "another-web-game"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Toy App"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Toy App"], ["notes", "A bare-bones Rails test app."], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/getting-your-feet-wet#project-starting-the-ror-tutorial"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/toy_app"], ["url", "https://odin-toy-app-live.herokuapp.com/"], ["created_at", "2019-12-20 01:04:26.889190"], ["updated_at", "2019-12-20 01:04:26.889190"], ["slug", "toy-app"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Rest Client"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Rest Client"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/let-s-get-building#warmup-restclient"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.896965"], ["updated_at", "2019-12-20 01:04:26.896965"], ["slug", "rest-client"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Sample App"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Sample App"], ["notes", "Awaiting Carrierwave debugging."], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/let-s-get-building#project-ruby-on-rails-tutorial"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/sample_app"], ["url", "https://odin-sample-app-live.herokuapp.com/"], ["complete", 0], ["created_at", "2019-12-20 01:04:26.909391"], ["updated_at", "2019-12-20 01:04:26.909391"], ["slug", "sample-app"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Micro Reddit"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Micro Reddit"], ["notes", "This app is currently lacking a front-end."], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-with-active-record-ruby-on-rails#project-2-micro-reddit"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/micro-reddit"], ["url", "https://odin-micro-reddit-live.herokuapp.com/"], ["complete", 0], ["created_at", "2019-12-20 01:04:26.917878"], ["updated_at", "2019-12-20 01:04:26.917878"], ["slug", "micro-reddit"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Re-Former"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Re-Former"], ["notes", "This app is currently lacking a front-end."], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/forms#project-1-bare-metal-forms-and-helpers"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/re-former"], ["url", ""], ["complete", 0], ["created_at", "2019-12-20 01:04:26.926437"], ["updated_at", "2019-12-20 01:04:26.926437"], ["slug", "re-former"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Members Only"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Members Only"], ["notes", "An exercise in custom authentication/authorization"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication#project-2-members-only"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/members-only"], ["url", "https://odin-members-only-live.herokuapp.com/posts/"], ["created_at", "2019-12-20 01:04:26.934343"], ["updated_at", "2019-12-20 01:04:26.934343"], ["slug", "members-only"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Private Events"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.7ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Private Events"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations#project-2-private-events"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/private-events"], ["url", "https://odin-private-events-live.herokuapp.com/events/"], ["created_at", "2019-12-20 01:04:26.944718"], ["updated_at", "2019-12-20 01:04:26.944718"], ["slug", "private-events"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Flight Booker"], ["LIMIT", 1]]
+  [1m[36mProject Create (1.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Flight Booker"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms#project-flight-booker"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/odin-flight-booker"], ["url", "https://odin-flight-booker-live.herokuapp.com/"], ["created_at", "2019-12-20 01:04:26.953241"], ["updated_at", "2019-12-20 01:04:26.953241"], ["slug", "flight-booker"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Kittens API"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.7ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Kittens API"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/apis#project-1-building-a-simple-kittens-api"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/odin-kittens"], ["url", "https://odin-kittens-api-live.herokuapp.com/"], ["created_at", "2019-12-20 01:04:26.964349"], ["updated_at", "2019-12-20 01:04:26.964349"], ["slug", "kittens-api"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Flickr API"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.9ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Flickr API"], ["notes", "An app demonstrating use of the Flickr API to find an account's photos by id"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/apis#project-2-using-a-third-party-api"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/ruby_on_rails/flickr-api"], ["url", "https://odin-flickr-api-live.herokuapp.com/"], ["created_at", "2019-12-20 01:04:26.975584"], ["updated_at", "2019-12-20 01:04:26.975584"], ["slug", "flickr-api"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Odinbook"], ["LIMIT", 1]]
+  [1m[36mProject Create (1.6ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "complete", "visible", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 4], ["name", "Odinbook"], ["tutorial", "https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project"], ["source", ""], ["url", ""], ["complete", 0], ["visible", 0], ["created_at", "2019-12-20 01:04:26.986387"], ["updated_at", "2019-12-20 01:04:26.986387"], ["slug", "odinbook"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "HTML and CSS"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.6ms)[0m  [1m[32mINSERT INTO "courses" ("name", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["name", "HTML and CSS"], ["tutorial", "https://www.theodinproject.com/courses/html5-and-css3"], ["created_at", "2019-12-20 01:04:26.997007"], ["updated_at", "2019-12-20 01:04:26.997007"], ["slug", "html-and-css"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Javascript"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.5ms)[0m  [1m[32mINSERT INTO "courses" ("name", "source", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Javascript"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript"], ["tutorial", "https://www.theodinproject.com/courses/javascript"], ["created_at", "2019-12-20 01:04:27.006245"], ["updated_at", "2019-12-20 01:04:27.006245"], ["slug", "javascript"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Library"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 6], ["name", "Library"], ["tutorial", "https://www.theodinproject.com/courses/javascript/lessons/library"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/library"], ["url", "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/javascript/library/index.html"], ["created_at", "2019-12-20 01:04:27.014172"], ["updated_at", "2019-12-20 01:04:27.014172"], ["slug", "library"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Tic Tac Toe (Javascript Version)"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 6], ["name", "Tic Tac Toe (Javascript Version)"], ["notes", "Seems to have some matching bugs; awaiting fix."], ["tutorial", "https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/tic_tac_toe"], ["url", "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/javascript/tic_tac_toe/index.html"], ["complete", 0], ["created_at", "2019-12-20 01:04:27.023268"], ["updated_at", "2019-12-20 01:04:27.023268"], ["slug", "tic-tac-toe-(javascript)"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Restaurant Page"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "tutorial", "source", "url", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 6], ["name", "Restaurant Page"], ["tutorial", "https://www.theodinproject.com/courses/javascript/lessons/restaurant-page"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/restaurant_page"], ["url", "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/javascript/restaurant_page/dist/index.html"], ["created_at", "2019-12-20 01:04:27.031122"], ["updated_at", "2019-12-20 01:04:27.031122"], ["slug", "restaurant-page"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "Todo List"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 6], ["name", "Todo List"], ["notes", "Looks like there are still a few bugs to work out.  Fix coming soon-ish."], ["tutorial", "https://www.theodinproject.com/courses/javascript/lessons/todo-list"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/todo_list"], ["url", "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/javascript/todo_list/dist/index.html"], ["complete", 0], ["created_at", "2019-12-20 01:04:27.041146"], ["updated_at", "2019-12-20 01:04:27.041146"], ["slug", "todo-list"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."name" = ? LIMIT ?[0m  [["name", "React Library"], ["LIMIT", 1]]
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("course_id", "name", "notes", "tutorial", "source", "url", "complete", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["course_id", 6], ["name", "React Library"], ["notes", "A recreation/expansion of the original library project.  Could use some further styling."], ["tutorial", "https://www.theodinproject.com/courses/javascript/lessons/frameworks"], ["source", "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/react-library"], ["url", "https://the-odin-projects-live.s3.amazonaws.com/javascript/react-library/build/index.html"], ["complete", 0], ["created_at", "2019-12-20 01:04:27.060261"], ["updated_at", "2019-12-20 01:04:27.060261"], ["slug", "react-library"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."name" = ? LIMIT ?[0m  [["name", "Node.js"], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("name", "tutorial", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Node.js"], ["tutorial", "https://www.theodinproject.com/courses/nodejs"], ["created_at", "2019-12-20 01:04:27.067659"], ["updated_at", "2019-12-20 01:04:27.067659"], ["slug", "node-js"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: Single arity template handlers are deprecated. Template handlers must
+now accept two parameters, the view object and the source for the view object.
+Change:
+  >> Coffee::Rails::TemplateHandler.call(template)
+To:
+  >> Coffee::Rails::TemplateHandler.call(template, source)
+ (called from <main> at /home/overseer/Git/the_odin_project/live_preview/config/environment.rb:5)
+Started GET "/" for 127.0.0.1 at 2019-12-19 17:06:28 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."visible" = ? LIMIT ?[0m  [["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/index.html.erb:8
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."visible" = ?[0m  [["visible", 1]]
+  ↳ app/views/courses/index.html.erb:11
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" IN (?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["course_id", 2], ["course_id", 4], ["course_id", 5], ["course_id", 6], ["course_id", 7]]
+  ↳ app/views/courses/index.html.erb:11
+  Rendered courses/index.html.erb within layouts/application (Duration: 51.8ms | Allocations: 22585)
+Completed 200 OK in 366ms (Views: 351.5ms | ActiveRecord: 2.8ms | Allocations: 367917)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:06:30 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.7ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2030)
+Completed 200 OK in 83ms (Views: 57.1ms | ActiveRecord: 1.6ms | Allocations: 20426)
+
+
+Started GET "/courses/javascript/projects/react-library" for 127.0.0.1 at 2019-12-19 17:06:31 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"react-library"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "react-library"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 507)
+Completed 200 OK in 32ms (Views: 23.5ms | ActiveRecord: 0.7ms | Allocations: 18355)
+
+
+Started GET "/courses/javascript/projects/react-library" for 127.0.0.1 at 2019-12-19 17:07:10 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"react-library"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "react-library"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 165)
+Completed 200 OK in 29ms (Views: 23.9ms | ActiveRecord: 0.4ms | Allocations: 17146)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:21 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1651)
+Completed 200 OK in 31ms (Views: 25.2ms | ActiveRecord: 1.0ms | Allocations: 19274)
+
+
+Started GET "/courses" for 127.0.0.1 at 2019-12-19 17:07:22 -0800
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."visible" = ? LIMIT ?[0m  [["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/index.html.erb:8
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."visible" = ?[0m  [["visible", 1]]
+  ↳ app/views/courses/index.html.erb:11
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" IN (?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["course_id", 2], ["course_id", 4], ["course_id", 5], ["course_id", 6], ["course_id", 7]]
+  ↳ app/views/courses/index.html.erb:11
+  Rendered courses/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 3670)
+Completed 200 OK in 24ms (Views: 22.1ms | ActiveRecord: 0.9ms | Allocations: 19305)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:28 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1642)
+Completed 200 OK in 36ms (Views: 31.0ms | ActiveRecord: 1.0ms | Allocations: 19249)
+
+
+Started GET "/courses/javascript/projects/restaurant-page" for 127.0.0.1 at 2019-12-19 17:07:29 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"restaurant-page"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "restaurant-page"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 143)
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 0.3ms | Allocations: 17105)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:31 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1642)
+Completed 200 OK in 46ms (Views: 38.1ms | ActiveRecord: 0.9ms | Allocations: 19230)
+
+
+Started GET "/courses/javascript/projects/todo-list" for 127.0.0.1 at 2019-12-19 17:07:32 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"todo-list"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "todo-list"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 164)
+Completed 200 OK in 26ms (Views: 21.5ms | ActiveRecord: 0.4ms | Allocations: 17133)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:33 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1643)
+Completed 200 OK in 31ms (Views: 24.2ms | ActiveRecord: 0.9ms | Allocations: 19283)
+
+
+Started GET "/courses/javascript/projects/tic-tac-toe-(javascript)" for 127.0.0.1 at 2019-12-19 17:07:34 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"tic-tac-toe-(javascript)"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "tic-tac-toe-(javascript)"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 165)
+Completed 200 OK in 64ms (Views: 58.9ms | ActiveRecord: 0.4ms | Allocations: 17142)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:36 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1642)
+Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 1.1ms | Allocations: 19218)
+
+
+Started GET "/courses/javascript/projects/library" for 127.0.0.1 at 2019-12-19 17:07:37 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"javascript", "slug"=>"library"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 6], ["slug", "library"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 143)
+Completed 200 OK in 21ms (Views: 16.0ms | ActiveRecord: 0.2ms | Allocations: 17107)
+
+
+Started GET "/courses/javascript" for 127.0.0.1 at 2019-12-19 17:07:38 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"javascript"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "javascript"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 6]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 6], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 6], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1642)
+Completed 200 OK in 46ms (Views: 41.3ms | ActiveRecord: 0.7ms | Allocations: 19228)
+
+
+Started GET "/courses" for 127.0.0.1 at 2019-12-19 17:07:38 -0800
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."visible" = ? LIMIT ?[0m  [["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/index.html.erb:8
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."visible" = ?[0m  [["visible", 1]]
+  ↳ app/views/courses/index.html.erb:11
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" IN (?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["course_id", 2], ["course_id", 4], ["course_id", 5], ["course_id", 6], ["course_id", 7]]
+  ↳ app/views/courses/index.html.erb:11
+  Rendered courses/index.html.erb within layouts/application (Duration: 18.9ms | Allocations: 3648)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.7ms | Allocations: 19287)
+
+
+Started GET "/courses/web-development-101" for 127.0.0.1 at 2019-12-19 17:07:39 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"web-development-101"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "web-development-101"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 1], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 1], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1519)
+Completed 200 OK in 36ms (Views: 30.5ms | ActiveRecord: 0.7ms | Allocations: 19148)
+
+
+Started GET "/courses/web-development-101/projects/google-mockup" for 127.0.0.1 at 2019-12-19 17:07:40 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"web-development-101", "slug"=>"google-mockup"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "web-development-101"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 1], ["slug", "google-mockup"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 165)
+Completed 200 OK in 27ms (Views: 23.1ms | ActiveRecord: 0.4ms | Allocations: 17130)
+
+
+Started GET "/courses/web-development-101" for 127.0.0.1 at 2019-12-19 17:07:41 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"web-development-101"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "web-development-101"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 1], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 1], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1518)
+Completed 200 OK in 28ms (Views: 22.7ms | ActiveRecord: 0.7ms | Allocations: 19164)
+
+
+Started GET "/courses" for 127.0.0.1 at 2019-12-19 17:07:41 -0800
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "courses" WHERE "courses"."visible" = ? LIMIT ?[0m  [["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/index.html.erb:8
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."visible" = ?[0m  [["visible", 1]]
+  ↳ app/views/courses/index.html.erb:11
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" IN (?, ?, ?, ?, ?, ?)[0m  [["course_id", 1], ["course_id", 2], ["course_id", 4], ["course_id", 5], ["course_id", 6], ["course_id", 7]]
+  ↳ app/views/courses/index.html.erb:11
+  Rendered courses/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3646)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.7ms | Allocations: 19291)
+
+
+Started GET "/courses/ruby-on-rails" for 127.0.0.1 at 2019-12-19 17:07:42 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"ruby-on-rails"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "ruby-on-rails"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 4]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 4], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 4], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1883)
+Completed 200 OK in 44ms (Views: 38.3ms | ActiveRecord: 1.0ms | Allocations: 19642)
+
+
+Started GET "/courses/ruby-on-rails/projects/toy-app" for 127.0.0.1 at 2019-12-19 17:07:43 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"ruby-on-rails", "slug"=>"toy-app"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "ruby-on-rails"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 4], ["slug", "toy-app"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 164)
+Completed 200 OK in 33ms (Views: 29.7ms | ActiveRecord: 0.3ms | Allocations: 17135)
+
+
+Started GET "/courses/ruby-on-rails" for 127.0.0.1 at 2019-12-19 17:07:51 -0800
+Processing by CoursesController#show as HTML
+  Parameters: {"slug"=>"ruby-on-rails"}
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "ruby-on-rails"], ["LIMIT", 1]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ?[0m  [["course_id", 4]]
+  ↳ app/controllers/courses_controller.rb:11:in `show'
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mProject Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ? LIMIT ?[0m  [["course_id", 4], ["visible", 1], ["LIMIT", 1]]
+  ↳ app/views/courses/show.html.erb:16
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."visible" = ?[0m  [["course_id", 4], ["visible", 1]]
+  ↳ app/views/courses/show.html.erb:19
+  Rendered courses/show.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1884)
+Completed 200 OK in 54ms (Views: 48.3ms | ActiveRecord: 1.0ms | Allocations: 19666)
+
+
+Started GET "/courses/ruby-on-rails/projects/flight-booker" for 127.0.0.1 at 2019-12-19 17:08:04 -0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"course_slug"=>"ruby-on-rails", "slug"=>"flight-booker"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."slug" = ? LIMIT ?[0m  [["slug", "ruby-on-rails"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:7:in `show'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."course_id" = ? AND "projects"."slug" = ? LIMIT ?[0m  [["course_id", 4], ["slug", "flight-booker"], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:8:in `show'
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 143)
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 0.3ms | Allocations: 17109)
+
+

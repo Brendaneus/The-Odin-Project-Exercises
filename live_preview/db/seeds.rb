@@ -423,6 +423,16 @@ todo_list = javascript.projects.create!(
 	url: "https://the-odin-projects-live.s3.us-east-1.amazonaws.com/javascript/todo_list/dist/index.html"
 )
 
+react_library = javascript.projects.create!(
+	complete: false,
+	slug: "react-library",
+	name: "React Library",
+	notes: "A recreation/expansion of the original library project.  Could use some further styling.",
+	tutorial: "https://www.theodinproject.com/courses/javascript/lessons/frameworks",
+	source: "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/react-library",
+	url: "https://the-odin-projects-live.s3.amazonaws.com/javascript/react-library/build/index.html"
+)
+
 # Node.js (?)
 node = Course.create!(
 	slug: "node-js",

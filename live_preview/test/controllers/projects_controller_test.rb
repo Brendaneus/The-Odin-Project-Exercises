@@ -3,13 +3,8 @@ require 'test_helper'
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@course_one = courses(:one)
-		@course_two = courses(:two)
-
-		@course_one_project_one = projects(:one_one)
-		@course_one_project_two = projects(:one_two)
-		@course_two_project_one = projects(:two_one)
-		@course_two_project_two = projects(:two_two)
+		@course = courses(:one)
+		@project = projects(:one_one)
 	end
 
 	test "should get show" do
