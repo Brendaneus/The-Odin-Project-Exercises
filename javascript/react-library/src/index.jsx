@@ -79,7 +79,10 @@ class Library extends React.Component {
   }
 
   loadData () {
-    this.setState({ books: JSON.parse(window.localStorage.getItem('savedBooks')) })
+    const savedBooks = window.localStorage.getItem('savedBooks')
+    if (savedBooks != null) {
+      this.setState({ books: JSON.parse(savedBooks) })
+    }
   }
 
   saveData () {
@@ -378,12 +381,14 @@ class Library extends React.Component {
       let match = true
       // Check against title filter
       if ((this.state.titleFilter.length > 0) &&
-        !(book.title.toLowerCase().includes(this.state.titleFilter.toLowerCase()))) {
+        ((book.title == null) ||
+        !(book.title.toLowerCase().includes(this.state.titleFilter.toLowerCase())))) {
         match = false
       }
       // Check against author filter
       if ((this.state.authorFilter.length > 0) &&
-        !(book.author.toLowerCase().includes(this.state.authorFilter.toLowerCase()))) {
+        ((book.author == null) ||
+        !(book.author.toLowerCase().includes(this.state.authorFilter.toLowerCase())))) {
         match = false
       }
       return match
