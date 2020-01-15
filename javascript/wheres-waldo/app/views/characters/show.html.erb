@@ -1,0 +1,11 @@
+<nav class="flex-menu">
+
+  <h2><%= @character.name %></h2>
+
+  <%= link_to "Edit Character", edit_character_path(@character) %>
+  
+  <%= link_to "Delete Character", character_path(@character), method: :delete %>
+
+</nav>
+
+<%= render 'avatar', character: @character %>

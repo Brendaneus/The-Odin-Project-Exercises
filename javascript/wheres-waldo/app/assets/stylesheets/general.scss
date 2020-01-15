@@ -1,0 +1,276 @@
+main#picture, main#locations {
+	width: 100%;
+
+	nav.display-bar {
+		position: sticky;
+		z-index: 1;
+		top: 0px;
+		display: flex;
+		align-items: center;
+		background: white;
+
+		h2.message {
+			box-sizing: border-box;
+			min-height: 20px;
+			padding: 10px;
+			margin: 0px 5px;
+			flex: 1 1 auto;
+			border: medium solid black;
+			border-radius: 2px;
+
+			&.notice {
+				// border-color: black;
+			}
+			&.success {
+				border-color: green;
+			}
+			&.failure {
+				border-color: orange;
+			}
+			&.error {
+				border-color: red;
+			}
+		}
+
+		a.quit {
+			text-align: center;
+			min-width: 80px;
+			padding: 10px;
+			border: 2px solid black;
+			border-radius: 5px;
+
+			&:hover {
+				text-shadow: -2px 0 1px black, 0 2px 1px black, 2px 0 1px black, 0 -2px 1px black;
+				background: red;
+			}
+
+			h3 {
+				margin: 0;
+			}
+		}
+	}
+
+	section.finish-menu {
+		position: fixed;
+		flex-wrap: wrap;
+		top: calc(50% - 80px);
+		left: calc(50% - 200px);
+		min-height: 200px;
+		width: 400px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background: white;
+		padding: 5px;
+		border: thick solid #BADA55;
+		border-radius: 10px;
+
+		h1 {
+			width: 100%;
+			font-size: 2rem;
+		}
+		
+		h3 {
+			width: 100%;
+		}
+
+		nav {
+
+			a {
+				display: inline-block;
+				padding: 5px;
+				margin: 2px;
+				border: thin solid black;
+			}
+		}
+	}
+
+	section#image {
+		position: relative;
+		background: red;
+		width: 100%;
+		user-drag: none; 
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		
+		img {
+			width: 100%;
+			pointer-events: none;
+		}
+
+		div.selection-area {
+			box-sizing: border-box;         /* Opera/IE 8+ */
+			-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+			-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		}
+
+		div.location:hover {
+			background: rgba(0,0,255,0.1);
+			border-color: rgba(0,0,255,0.5);
+		}
+
+		div.context-menu {
+			display: inline-block;
+			background: hsla(0,0%,100%,0.8);
+			border-radius: 5px 0px 0px 0px;
+
+			div.context-header, div.context-footer {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				h4 {
+					margin: auto 5px;
+				}
+
+				button {
+					font-size: 0.75rem;
+					border-radius: 0;
+					pointer-events: auto;
+
+					&.close {
+						color: #d00;
+					}
+
+					&:hover {
+						background: #e0e0e0;
+					}
+				}
+
+				p.hint {
+					border-top: thin solid grey;
+					padding: 3px;
+					margin: 0;
+					background: white;
+					font-weight: bolder;
+				}
+
+				input.hint {
+					width: 100%;
+    				box-sizing: border-box;         /* Opera/IE 8+ */
+					-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    				-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+				}
+			}
+
+			div.context-footer button {
+				flex: 1 1 auto;
+			}
+
+			div.tab-container {
+				.avatar {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 160px;
+					background: white;
+					margin: auto;
+
+					img {
+						width: auto;
+						max-height: 100%;
+						max-width: 100%;
+						margin: auto;
+					}
+				}
+
+				.tablist {
+					display: inline-flex;
+					flex-wrap: wrap;
+					width: 100%;
+
+					h5 {
+						font-weight: bolder;
+						background: white;
+						padding: 5px 2px;
+						margin: 0;
+					}
+
+					button {
+						flex-basis: 100%;
+						opacity: 1;
+						border: thin solid black;
+						border-radius: 3;
+						pointer-events: auto;
+
+						&.active {
+							opacity: 1;
+							background: #e0e0e0;
+						}
+
+						&:hover {
+							opacity: 1;
+							background: #e0e0e0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+div.timer {
+	text-align: center;
+	height: 100%;
+	min-width: 80px;
+	box-sizing: border-box;
+	border: 2px solid black;
+
+	h3 {
+		margin: 0;
+
+		&.added {
+			color: blue;
+		}
+	}
+}
+
+.flex-menu {
+	display: flex;
+	align-items: stretch;
+
+	* {
+		padding: 5px;
+		margin: 10px 0px;
+		border: thin solid black;
+	}
+
+	h1, h2, h3  {
+		flex: 1 0 auto;
+	}
+
+	a {
+		flex: 0 0 auto;
+	}
+
+}
+
+form {
+	border: thin solid black;
+	padding: 5px;
+
+	div {
+		margin-bottom: 10px;
+
+		label {
+			font-weight: bolder;
+		}
+	}
+}
+
+.unselectable {
+	user-drag: none; 
+	user-select: none;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.hidden-tag {
+	display: none;
+}

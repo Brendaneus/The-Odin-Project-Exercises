@@ -1,0 +1,17 @@
+<h2>Editing <%= @character.name %></h2>
+
+<% if @character.errors.any? %>
+
+  <ul>
+
+    <% @character.errors.full_messages.each do |msg| %>
+
+      <li><%= msg %></li>
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+<%= render 'form', form_url: character_url(@character) %>

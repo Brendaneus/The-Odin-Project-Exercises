@@ -1,0 +1,17 @@
+<h2>Editing <%= @album.title %></h2>
+
+<% if @album.errors.any? %>
+
+  <ul>
+
+    <% @album.errors.full_messages.each do |msg| %>
+
+      <li><%= msg %></li>
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+<%= render 'form', form_url: album_url(@album) %>

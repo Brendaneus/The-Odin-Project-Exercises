@@ -1,0 +1,61 @@
+<nav class="flex-menu">
+
+  <h2><%= @picture.title %> : Character Locations</h2>
+
+  <%= link_to "Go Back", edit_album_picture_path(@album, @picture) %>
+
+</nav>
+
+<main id='locations'>
+
+  <display-bar v-bind:message="message"></display-bar>
+
+  <% if @picture.image.attached? %>
+
+    <section id="image"
+      v-on:mouseDown.self="handleMouseDown"
+      v-on:mouseMove="handleMouseMove"
+      v-on:mouseUp="handleMouseUp"
+      v-on:mouseleave="handleMouseUp" >
+
+      <%= render 'pictures/image', picture: @picture %>
+
+      <div class="location-areas">
+        <location-area
+          v-for="location in locations"
+          v-bind:key="location.id"
+          v-bind:location="location"
+          v-bind:characters="characters"
+          v-bind:selecting="true"
+          v-bind:editing="true"
+          v-on:focus-location="layerAreas($event, '')"
+          v-on:unfocus-location="layerAreas('', $event)"
+          v-on:close-clicked="setContext"
+          v-on:update-clicked="updateLocation($event)"
+          v-on:delete-clicked="deleteLocation($event)" >
+        </location-area>
+      </div>
+
+      <selection-box
+        v-show="selection.active"
+        v-bind:selection="selection"
+        v-bind:characters="characters"
+        v-bind:selecting="true"
+        v-bind:editing="true"
+        v-on:character-selected="selectCharacter"
+        v-on:close-clicked="closeSelection"
+        v-on:submit-clicked="submitSelection" >
+      </selection-box>
+
+    </section>
+
+    <%= tag.span album_picture_selections_url(@album, @picture), class: 'hidden-tag selections-url' %>
+    <%= tag.span album_picture_locations_url(@album, @picture), class: 'hidden-tag locations-url' %>
+
+  <% else %>
+
+  	<p>Picture has no image attached!</p>
+
+  <% end %>
+
+</main>

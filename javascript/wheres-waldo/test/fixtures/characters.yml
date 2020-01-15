@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+waldo:
+  name: "Waldo"
+
+wenda:
+  name: "Wenda"
+
+odlaw:
+  name: "Odlaw"
+
+woof:
+  name: "Woof"
+
+wizard:
+  name: "Wizard WhiteBeard"

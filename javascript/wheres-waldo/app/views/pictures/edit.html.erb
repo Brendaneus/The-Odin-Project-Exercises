@@ -1,0 +1,27 @@
+<nav class="flex-menu">
+
+  <h2>Editing <%= @picture.title %></h2>
+  
+  <%= link_to "Locations", album_picture_locations_path(@album, @picture) %>
+  
+  <%= link_to "Delete Album", album_picture_path(@album, @picture), method: :delete %>
+
+  <%= link_to "Go Back", album_path(@album) %>
+
+</nav>
+
+<% if @picture.errors.any? %>
+
+  <ul>
+
+    <% @picture.errors.full_messages.each do |msg| %>
+  
+      <li><%= msg %></li>      
+
+    <% end %>
+
+  </ul>
+
+<% end %>
+
+<%= render 'form', form_url: album_picture_url(@album, @picture) %>

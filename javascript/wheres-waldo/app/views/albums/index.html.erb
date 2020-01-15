@@ -1,0 +1,25 @@
+<nav class="flex-menu">
+
+  <h2>Albums</h2>
+
+  <%= link_to "New Album", new_album_path %>
+
+</nav>
+
+<section id="album_list">
+
+  <% if @albums.any? %>
+
+    <% @albums.each do |album| %>
+
+      <h3><%= link_to album.title, album_path(album) %></h3>
+
+    <% end %>
+
+  <% else %>
+
+    <p>No albums have been created yet...</p>
+
+  <% end %>
+
+<section>

@@ -1,0 +1,10 @@
+<%= form_for @album, class: 'album_form' do |form| %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: 'Enter a value...' %>
+  </div>
+
+  <%= form.submit %>
+
+<% end %>

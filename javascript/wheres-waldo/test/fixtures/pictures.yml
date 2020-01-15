@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  album: one
+  title: Picture One
+
+two:
+  album: one
+  title: Picture Two
+
+three:
+  album: two
+  title: Picture Three
+
+four:
+  album: two
+  title: Picture Four

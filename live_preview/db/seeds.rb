@@ -433,6 +433,16 @@ react_library = javascript.projects.create!(
 	url: "https://the-odin-projects-live.s3.amazonaws.com/javascript/react-library/build/index.html"
 )
 
+wheres_waldo = javascript.projects.create!(
+  complete: false,
+  slug: "wheres-waldo",
+  name: "Where's Waldo",
+  notes: "A multi-page app built into native Rails with Webpacker and Turbolinks.  Beware the back button; a second pass is coming later.",
+  tutorial: "https://www.theodinproject.com/courses/javascript/lessons/where-s-waldo-a-photo-tagging-app",
+  source: "https://github.com/Brendaneus/the_odin_project/tree/master/javascript/wheres-waldo",
+  url: "https://odin-wheres-waldo.herokuapp.com"
+)
+
 # Node.js (?)
 node = Course.create!(
 	slug: "node-js",

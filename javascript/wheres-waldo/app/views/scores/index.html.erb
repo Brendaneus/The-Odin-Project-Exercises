@@ -1,0 +1,33 @@
+<nav class="flex-menu">
+
+  <h2><%= @picture.title %> : Score Board</h2>
+
+  <%= link_to "New Game", album_picture_scores_path(@album, @picture), method: :post %>
+
+  <%= link_to "Go Back", album_path(@album) %>
+
+</nav>
+
+<section id="score_list">
+
+  <% if @scores.any? %>
+
+    <ul>
+
+      <% @scores.each do |score| %>
+
+        <li><%= score.owned? ? score.user.name : 'Guest' %> - <%= formatted_duration(score.elapsed_time) %></li>
+
+      <% end %>
+
+    </ul>
+
+  <% else %>
+
+    <p>No scores have been posted yet.</p>
+
+    <%= link_to "Be the first to set a score.", album_picture_scores_path, method: :post %>
+
+  <% end %>
+
+<section>

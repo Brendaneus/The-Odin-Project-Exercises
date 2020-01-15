@@ -477,16 +477,18 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
+// IMPORTANT: Separate into components
+//  - Headers can share code this way
+// TODO: Status should have higher sort priority -- make adjustable priorities
+// TODO: Implement better case-wise alphebetizing
+
 // TODO: Debounce all text inputs (think filters while populating new)
+// IDEA: Dim text before triggering onChange (separate text?)
+
 // TODO: Make Remove button disabled on new books
 // TODO: Make entire autosave div clickable
-// TODO: Implement better case-wise alphebetizing
 // TODO: Add some sort of notification for unloaded data (ie- class on button)
 // TODO: Add Delete Data Button
+
 // TODO: Add sample data
 // TODO: Clean up!!!!
-
-// IMPORTANT: Separate headers into components for code reuse???
-//  - can use calculated variables
-
-// IDEA: Dim text before triggering onChange (separate text?)

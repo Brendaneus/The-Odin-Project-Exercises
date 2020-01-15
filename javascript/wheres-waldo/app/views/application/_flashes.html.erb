@@ -1,0 +1,15 @@
+<% if flash.any? %>
+
+  <ul class="flash">
+
+    <% flash.each do |key, message| %>
+
+      <%= tag.li message, class: key %>
+
+    <% end %>
+
+  </ul>
+
+  <hr />
+
+<% end %>

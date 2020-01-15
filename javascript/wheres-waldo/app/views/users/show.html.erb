@@ -1,0 +1,41 @@
+<nav class="flex-menu">
+
+  <h2><%= @user.name %></h2>
+
+  <%= link_to "Edit User", edit_user_path(@user) %>
+  
+  <%= link_to "Delete User", user_path(@user), method: :delete %>
+
+</nav>
+
+<section id="score_list">
+
+  <h3>Running Games</h3>
+
+  <ul>
+
+    <% @games.each do |score| %>
+
+      <li>
+        <h4><%= link_to "#{score.picture.title} : #{formatted_duration(score.elapsed_time)}", load_album_picture_score_path(score.picture.album, score.picture, score ) %></h4>
+      </li>
+
+    <% end %>
+
+  </ul>
+
+  <h3>High Scores</h3>
+
+  <ul>
+
+    <% @scores.each do |score| %>
+
+      <li>
+        <h4><%= link_to score.picture.title, album_picture_scores_path(score.picture.album, score.picture) %> : <%= formatted_duration(score.elapsed_time) %></h4>
+      </li>
+
+    <% end %>
+
+  </ul>
+
+</section>

@@ -1,0 +1,59 @@
+<main id='picture' initial-time="<%= @score.elapsed_time %>" finished="<%= @score.finished %>">
+
+  <display-bar timed in-game
+    v-bind:message="message"
+    v-bind:time="time"
+    v-bind:quit-url="'<%= quit_album_picture_scores_url(@album, @picture) %>'"
+    v-bind:finished="finished" >
+  </display-bar>
+  
+  <% if @picture.image.attached? %>
+
+    <section id="image"
+      v-on:mouseDown.self="handleMouseDown"
+      v-on:mouseMove="handleMouseMove"
+      v-on:mouseUp="handleMouseUp"
+      v-on:mouseleave="handleMouseUp" >
+
+      <%= render 'image', picture: @picture %>
+
+      <div class="location-areas">
+        <location-area
+          v-for="location in locations"
+          v-bind:key="location.id"
+          v-bind:location="location"
+          v-bind:characters="characters"
+          v-on:focus-location="layerAreas($event, '')"
+          v-on:unfocus-location="layerAreas('', $event)"
+          v-on:close-clicked="setContext"
+          v-on:update-clicked="updateLocation($event)"
+          v-on:delete-clicked="deleteLocation($event)" >
+        </location-area>
+      </div>
+
+      <selection-box
+        v-show="selection.active"
+        v-bind:selection="selection"
+        v-bind:characters="characters"
+        v-bind:selecting="true"
+        v-on:character-selected="selectCharacter"
+        v-on:close-clicked="closeSelection"
+        v-on:submit-clicked="submitSelection" >
+      </selection-box>
+
+    </section>
+
+    <%= tag.span album_picture_score_hints_url(@album, @picture, @score), class: 'hidden-tag hints-url' %>
+    <%= tag.span album_picture_score_matches_url(@album, @picture, @score), class: 'hidden-tag matches-url' %>
+    <%= tag.span album_picture_score_guess_url(@album, @picture, @score), class: 'hidden-tag guess-url' %>
+
+  <% end %>
+
+  <finish-menu v-show="finished" v-bind:final-time="time.total" >
+    <nav>
+      <%= link_to 'Scoreboard', quit_album_picture_scores_path(@album, @picture) %>
+      <%= link_to 'Back to Album', quit_album_picture_scores_path(@album, @picture, to_album: true) %>
+    </nav>
+  </finish-menu>
+
+</main>

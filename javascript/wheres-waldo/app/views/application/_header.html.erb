@@ -1,0 +1,31 @@
+<header>
+
+  <nav>
+    <h1>
+      <%= link_to "Where's", albums_path %>
+      <%= link_to "Waldo?", characters_path %>
+    </h1>
+
+    <% if score_set? && !@playing_game %>
+      <div id="score-display" initial-time="<%= current_score.total_time %>" >
+        <timer v-bind:total="elapsedTime"></timer>
+        <h3>You currently have a match in progress.</h3>
+        <%= link_to "Continue", load_album_picture_score_path(current_score.picture.album, current_score.picture, current_score) %>
+        <%= link_to "Quit", quit_album_picture_scores_path(current_score.picture.album, current_score.picture) %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= link_to "Sign Up", new_user_path unless logged_in? %>
+      <%= link_to "Login", login_path unless logged_in? %>
+
+      <%= link_to "Account", user_path(current_user) if logged_in? %>
+      <%= link_to "Logout", logout_path if logged_in? %>
+    </div>
+  </nav>
+
+  <hr />
+
+  <%= render 'flashes' %>
+
+</header>

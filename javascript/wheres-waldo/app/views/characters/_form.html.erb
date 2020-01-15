@@ -1,0 +1,22 @@
+<%= form_for @character do |form| %>
+  
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: 'Enter a value' %>
+  </div>
+
+  <% if @character.avatar.attached? %>
+
+    <%= render 'avatar', character: @character, size: :medium %>
+
+  <% end %>
+
+  <div>
+    <%= form.label :avatar %>
+    <!-- NEED TO SANITIZE/STANDARDIZE THIS -->
+    <%= form.file_field :avatar %>
+  </div>
+
+  <%= form.submit %>
+
+<% end %>

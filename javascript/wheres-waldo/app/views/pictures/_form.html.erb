@@ -1,0 +1,22 @@
+<%= form_for @picture, url: form_url do |form| %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: 'Enter a title...' %>
+  </div>
+
+  <% if @picture.image.attached? %>
+
+    <%= render 'image', picture: @picture, size: :medium %>
+
+  <% end %>
+
+  <div>
+    <%= form.label :image %>
+    <!-- NEED TO SANITIZE/STANDARDIZE THIS -->
+    <%= form.file_field :image, placeholder: 'Upload an image...' %>
+  </div>
+
+  <%= form.submit %>
+
+<% end %>

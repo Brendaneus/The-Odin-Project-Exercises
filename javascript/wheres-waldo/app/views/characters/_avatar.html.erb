@@ -1,0 +1,23 @@
+<% size ||= nil %>
+
+<% if character.avatar.attached? %>
+
+  <% if size == :icon %>
+
+    <%= image_tag url_for(character.avatar.variant(resize: "30x30")) %>
+
+  <% elsif size == :medium %>
+
+    <%= image_tag url_for(character.avatar.variant(resize: "200x200")) %>
+
+  <% else %>
+
+    <%= image_tag url_for(character.avatar) %>
+
+  <% end %>
+
+<% else %>
+
+  <p>No avatar attached!</p>
+
+<% end %>

@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_waldo:
+  picture: one
+  character: waldo
+  left_coord: 1
+  right_coord: 3
+  top_coord: 1
+  bottom_coord: 3
+
+one_wenda:
+  picture: one
+  character: wenda
+  left_coord: 3
+  right_coord: 4
+  top_coord: 3
+  bottom_coord: 4
+
+one_odlaw:
+  picture: one
+  character: odlaw
+  left_coord: 5
+  right_coord: 5
+  top_coord: 5
+  bottom_coord: 5
+
+two_wizard:
+  picture: two
+  character: wizard
+  left_coord: 1
+  right_coord: 3
+  top_coord: 1
+  bottom_coord: 3
+
+two_woof:
+  picture: two
+  character: woof
+  left_coord: 3
+  right_coord: 4
+  top_coord: 3
+  bottom_coord: 4

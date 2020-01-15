@@ -1,0 +1,24 @@
+<% size ||= nil %>
+<% editing ||= nil %>
+
+<% if picture.image.attached? %>
+
+  <% if size == :thumb %>
+
+    <%= image_tag url_for(picture.image.variant(resize: "60x60")) %>
+
+  <% elsif size == :medium %>
+
+    <%= image_tag url_for(picture.image.variant(resize: "200x200")) %>
+
+  <% else %>
+
+    <%= image_tag url_for(@picture.image) %>
+
+  <% end %>
+
+<% else %>
+
+  <p>No image attached!</p>
+
+<% end %>

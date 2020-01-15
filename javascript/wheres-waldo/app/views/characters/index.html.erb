@@ -1,0 +1,25 @@
+<nav class="flex-menu">
+
+  <h2>Characters</h2>
+
+  <%= link_to "New Character", new_character_path %>
+
+</nav>
+
+<section id="character_list">
+
+  <% if @characters.any? %>
+
+    <% @characters.each do |character| %>
+
+      <h3><%= link_to character.name, character_path(character) %></h3>
+
+    <% end %>
+
+  <% else %>
+
+    <p>No characters have been created yet...</p>
+
+  <% end %>
+
+<section>

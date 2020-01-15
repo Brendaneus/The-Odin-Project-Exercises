@@ -1,0 +1,41 @@
+<nav class="flex-menu">
+
+  <h2><%= @album.title %></h2>
+
+  <%= link_to "New Picture", new_album_picture_path(@album) %>
+
+  <%= link_to "Edit Album", edit_album_path(@album) %>
+  
+  <%= link_to "Delete Album", album_path(@album), method: :delete %>
+
+  <%= link_to "Go Back", albums_path %>
+
+</nav>
+
+<section id="picture-list">
+
+  <% if @pictures.any? %>
+
+    <ul>
+
+      <% @pictures.each do |picture| %>
+
+        <li>
+          <%= link_to tag.h3(picture.title), album_picture_scores_path(@album, picture), method: :create, class: 'show-link' %>
+
+          <%= link_to tag.h4("Edit"), edit_album_picture_path(@album, picture), class: 'edit-link' if admin_user? %>
+
+          <%= link_to tag.h4("High Scores"), album_picture_scores_path(@album, picture) %>
+        </li>
+
+      <% end %>
+
+    </ul>
+
+  <% else %>
+
+    <p>No pictures have been added to the album yet...</p>
+
+  <% end %>
+
+</section>
